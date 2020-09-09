@@ -4,13 +4,17 @@ import androidx.compose.foundation.Icon
 import androidx.compose.foundation.Text
 import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.Notifications
+import androidx.compose.material.icons.filled.Person
+import androidx.compose.material.icons.filled.Search
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.ContextAmbient
-import androidx.compose.ui.res.vectorResource
 import androidx.ui.tooling.preview.Preview
-import com.example.jetexample.R
 import com.example.jetexample.utils.showMessage
 
 /**
@@ -22,69 +26,77 @@ import com.example.jetexample.utils.showMessage
 val listItems = listOf("Home", "Search", "Notifications", "Profile")
 
 @Composable
-fun BottomNavWithLabels(){
+fun BottomNavWithLabels() {
     val selectedIndex = remember { mutableStateOf(0) }
     val context = ContextAmbient.current
     BottomNavigation(content = {
         listItems.forEachIndexed { index, label ->
             BottomNavigationItem(
-                    icon = {
-                        when (index) {
-                            0 -> {
-                                Icon(vectorResource(id = R.drawable.ic_baseline_home_24))
-                            }
-                            1 -> {
-                                Icon(vectorResource(id = R.drawable.ic_baseline_search_24))
-                            }
-                            2 -> {
-                                Icon(vectorResource(id = R.drawable.ic_baseline_notifications_24))
-                            }
-                            3 -> {
-                                Icon(vectorResource(id = R.drawable.ic_baseline_person_24))
-                            }
-                        }
-                    },
-                    label = { Text(label) },
-                    onSelect = {
-                        selectedIndex.value = index
-                        showMessage(context,"$label selected")
-                    },
-                    selected = selectedIndex.value == index
+                icon = {
+                    when (index) {
+                        0 -> Icon(
+                            asset = Icons.Default.Home,
+                            tint = Color.White
+                        )
+                        1 -> Icon(
+                            asset = Icons.Default.Search,
+                            tint = Color.White
+                        )
+                        2 -> Icon(
+                            asset = Icons.Default.Notifications,
+                            tint = Color.White
+                        )
+                        3 -> Icon(
+                            asset = Icons.Default.Person,
+                            tint = Color.White
+                        )
+                    }
+                },
+                label = { Text(label) },
+                onSelect = {
+                    selectedIndex.value = index
+                    showMessage(context, "$label selected")
+                },
+                selected = selectedIndex.value == index
             )
         }
     })
 }
 
 @Composable
-fun BottomNavWithoutLabels(){
+fun BottomNavWithoutLabels() {
     val selectedIndex = remember { mutableStateOf(0) }
     val context = ContextAmbient.current
     BottomNavigation(content = {
         listItems.forEachIndexed { index, label ->
             BottomNavigationItem(
-                    icon = {
-                        when (index) {
-                            0 -> {
-                                Icon(vectorResource(id = R.drawable.ic_baseline_home_24))
-                            }
-                            1 -> {
-                                Icon(vectorResource(id = R.drawable.ic_baseline_search_24))
-                            }
-                            2 -> {
-                                Icon(vectorResource(id = R.drawable.ic_baseline_notifications_24))
-                            }
-                            3 -> {
-                                Icon(vectorResource(id = R.drawable.ic_baseline_person_24))
-                            }
-                        }
-                    },
-                    label = { Text(label) },
-                    onSelect = {
-                        selectedIndex.value = index
-                        showMessage(context,"$label selected")
-                    },
-                    selected = selectedIndex.value == index,
-                    alwaysShowLabels = false
+                icon = {
+                    when (index) {
+                        0 -> Icon(
+                            asset = Icons.Default.Home,
+                            tint = Color.White
+                        )
+                        1 -> Icon(
+                            asset = Icons.Default.Search,
+                            tint = Color.White
+                        )
+                        2 -> Icon(
+                            asset = Icons.Default.Notifications,
+                            tint = Color.White
+                        )
+                        3 -> Icon(
+                            asset = Icons.Default.Person,
+                            tint = Color.White
+                        )
+                    }
+                },
+                label = { Text(label) },
+                onSelect = {
+                    selectedIndex.value = index
+                    showMessage(context, "$label selected")
+                },
+                selected = selectedIndex.value == index,
+                alwaysShowLabels = false
             )
         }
     })
@@ -92,12 +104,12 @@ fun BottomNavWithoutLabels(){
 
 @Preview
 @Composable
-fun PreviewBottomNavWithoutLabels(){
+fun PreviewBottomNavWithoutLabels() {
     BottomNavWithoutLabels()
 }
 
 @Preview
 @Composable
-fun PreviewBottomNavWithLabels(){
+fun PreviewBottomNavWithLabels() {
     BottomNavWithLabels()
 }
