@@ -46,7 +46,7 @@ fun RecipeCard(recipe: Recipe){
             Spacer(modifier = Modifier.preferredHeight(16.dp))
             Text(text = recipe.title,style = typography.h6)
             for(ingredient in recipe.ingredients){
-                Text(text = ingredient,style = typography.body2)
+                Text(text = "* $ingredient",style = typography.body2)
             }
         }
     }
