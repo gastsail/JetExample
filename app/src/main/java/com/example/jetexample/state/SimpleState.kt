@@ -9,11 +9,19 @@ import androidx.ui.tooling.preview.Preview
 
 
 /**
+ * [EN]
  * Simple state describes how to recompose a text based on a button
  * that updates its content when clicked
  */
 
-// Here, Counter() will recompose itself each time the value of count is changed
+/**
+ * [ES]
+ * Esta clase describe como hacer recomposicion de un texto basado en el click
+ * de un boton, en donde modificamos el texto cuando presionamos el boton
+ */
+
+// [EN] Here, Counter() will recompose itself each time the value of count is changed
+// [ES] Aquí, Counter() va a recomponerse cada vez que el valor de count cambia
 @Composable
 fun Counter() {
     val count = remember { mutableStateOf(0) }

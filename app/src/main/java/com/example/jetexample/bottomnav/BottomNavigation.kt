@@ -20,9 +20,18 @@ import com.example.jetexample.toolbar.Toolbar
 import com.example.jetexample.utils.showMessage
 
 /**
+ * [EN]
  * This BottomNavigation should contain different [BottomNavigationItem]s
  * which will define top level destinations in our app
  * We use a mutableStateOf to keep track of the selected tabs state while tapping
+ */
+
+/**
+ * [ES]
+ * Este BottomNavigation deberia contener diferentes [BottomNavigationItem]s
+ * los cuales definen las navegaciones principales en nuestra app
+ * Usamos mutableStateOf para mantener un registro de las tabs seleccionadas cuando presionamos
+ * alguna de ellas
  */
 
 data class ListItem(val title: String, val icon: VectorAsset)
@@ -84,13 +93,15 @@ fun BottomNavWithoutLabels() {
 @Composable
 fun AlignToBottom(content: @Composable () -> Unit) {
     Scaffold(topBar = {
-        // If you want, you can include the toolbar we created in the other package here
+        // [EN] If you want, you can include the toolbar we created in the other package here with Toolbar()
+        // [ES] Si lo deseas, puedes incluir el toolbar que creamos en el otro paquete con Toolbar()
     },
             bottomBar = {
                 content()
             },
             bodyContent = {
-                //Here you can write your UI for each top destination
+                // [EN] Here you can write your UI for each top destination, take in mind that you need to reac to state change from the BottomNav
+                // [ES] Aquí puedes escribir la UI para cada destino, ten encuenta que deberias reaccionar a los cambios de estado del BottomNav
             })
 }
 

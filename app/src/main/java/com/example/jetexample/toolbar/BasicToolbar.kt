@@ -14,11 +14,21 @@ import com.example.jetexample.R
 import com.example.jetexample.utils.showMessage
 
 /**
+ * [EN]
  * This is an easy way to create a Toolbar, the recommended way to create
  * a toolbar is to use [IconButton] as a clickable menu item.
  * Here navigationIcon defines the left icon from the title and actions define
  * the icons at the right of the title, since its managed inside a RowScope
  * we can create a list of actions that will be arranged horizontally
+ */
+
+/**
+ * [ES]
+ * Esta es una forma facil de crear un Toolbar, la forma recomendada de manejar las acciones
+ * es utilizando [IconButton] como clickable para cada item de nuestro toolbar
+ * Aquí, navigationIcon define el icono a la izquierda de nuestro titulo en el Toolbar y
+ * las acciones (actions) definen los iconos a la derecha del titulo.
+ * Ya que está contenido en un RowScope, cuando creamos una lista de actions , se van a acomodar horizontalmente
  */
 
 @Composable

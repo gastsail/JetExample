@@ -18,24 +18,33 @@ import com.example.jetexample.ui.typography
 import com.example.jetexample.R
 
 /**
- * In this example will be creating a simple RecyclerView of recipes
+ * [EN]
+ * In this example will be creating a simple [RecyclerView] of recipes with [LazyColumnFor]
   */
 
-// We define a data class that will hold the data of each row
+/**
+ * [ES]
+ * En este ejemplo mostramos como crear un [RecyclerView] de recetas utilizando [LazyColumnFor]
+ */
+
+// [EN] We define a data class that will hold the data of each row
+// [ES] Definimos un data class que contiene los elementos de la receta
 data class Recipe(
         @DrawableRes val imageResource: Int,
         val title: String,
         val ingredients: List<String>
 )
 
-// Creating the dummy list
+// [EN] Creating the dummy list
+// [ES] Creamos una lista de prueba
 val recipeList = listOf(Recipe(R.drawable.header,"Arrozmate", listOf("Arroz","Tomate","Crema")),
         Recipe(R.drawable.header,"Calabaza", listOf("Queso","Azucar","Agua")),
         Recipe(R.drawable.header,"Torta", listOf("Merengue","Chocolate","Vainilla")),
         Recipe(R.drawable.header,"Torta2", listOf("Merengue2","Chocolate2","Vainilla2")))
 
 
-// We define each row of the recyclerview
+// [EN] We define each row of the recyclerview
+// [ES] Definimos cada fila del recyclerview
 @Composable
 fun RecipeCard(recipe: Recipe){
     val image = imageResource(R.drawable.header)
@@ -52,7 +61,8 @@ fun RecipeCard(recipe: Recipe){
     }
 }
 
-// We create a RecipeList with LazyColumnFor (same behaviour as RecyclerView)
+// [EN] We create a RecipeList with LazyColumnFor (same behaviour as RecyclerView)
+// [ES] Creamos una lista de recetas con LazyColumnFor (mismo comportamiento que RecyclerView)
 @Composable
 fun RecipeList(recipeList:List<Recipe>){
     LazyColumnFor(items = recipeList) { item ->
@@ -60,7 +70,8 @@ fun RecipeList(recipeList:List<Recipe>){
     }
 }
 
-// Rendering a preview with the first item of the list
+// [EN] Rendering a preview with the first item of the list
+// [ES] Mostramos un preview de uno de los items que creamos
 @Preview
 @Composable
 fun RecipePreview(){
