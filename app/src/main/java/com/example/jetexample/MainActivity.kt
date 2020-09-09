@@ -3,6 +3,7 @@ package com.example.jetexample
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.ui.platform.setContent
+import com.example.jetexample.bottomnav.BottomNavWithLabels
 
 
 /**
@@ -17,6 +18,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             //Call here what you want to try out
+            BottomNavWithLabels()
         }
     }
 }
