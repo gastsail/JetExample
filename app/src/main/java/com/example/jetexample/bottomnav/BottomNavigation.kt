@@ -12,7 +12,6 @@ import androidx.compose.material.icons.filled.Search
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.VectorAsset
 import androidx.compose.ui.platform.ContextAmbient
 import androidx.ui.tooling.preview.Preview
@@ -41,10 +40,7 @@ fun BottomNavWithLabels() {
         listItems.forEachIndexed { index, item ->
             BottomNavigationItem(
                 icon = {
-                    Icon(
-                        asset = item.icon,
-                        tint = Color.White
-                    )
+                    Icon(asset = item.icon)
                 },
                 label = { Text(item.title) },
                 onSelect = {
@@ -65,10 +61,7 @@ fun BottomNavWithoutLabels() {
         listItems.forEachIndexed { index, item ->
             BottomNavigationItem(
                 icon = {
-                    Icon(
-                        asset = item.icon,
-                        tint = Color.White
-                    )
+                    Icon(asset = item.icon)
                 },
                 label = { Text(item.title) },
                 onSelect = {
