@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.setContent
+import com.example.jetexample.foundation.clickabletext.ClickableTextDemo
 import com.example.jetexample.foundation.scrollablecolumn.ScrollableColumnDemo
 import com.example.jetexample.foundation.scrollablerow.ScrollableRowDemo
 import com.example.jetexample.material.snackbar.SnackbarDemo
