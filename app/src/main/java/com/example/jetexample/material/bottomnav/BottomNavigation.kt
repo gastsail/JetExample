@@ -1,8 +1,7 @@
-package com.example.jetexample.bottomnav
+package com.example.jetexample.material.bottomnav
 
 import androidx.compose.foundation.Icon
 import androidx.compose.foundation.Text
-import androidx.compose.material.BottomAppBar
 import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem
 import androidx.compose.material.Scaffold
@@ -17,7 +16,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.graphics.vector.VectorAsset
 import androidx.compose.ui.platform.ContextAmbient
 import androidx.ui.tooling.preview.Preview
-import com.example.jetexample.toolbar.Toolbar
 import com.example.jetexample.utils.showMessage
 
 /**
@@ -37,7 +35,7 @@ import com.example.jetexample.utils.showMessage
 
 data class ListItem(val title: String, val icon: VectorAsset)
 
-val listItems = listOf(
+private val listItems = listOf(
         ListItem("Home", Icons.Default.Home),
         ListItem("Search", Icons.Default.Search),
         ListItem("Notifications", Icons.Default.Notifications),
@@ -92,7 +90,7 @@ fun BottomNavWithoutLabels() {
 }
 
 @Composable
-fun AlignToBottom(content: @Composable () -> Unit) {
+private fun AlignToBottom(content: @Composable () -> Unit) {
     Scaffold(topBar = {
         // [EN] If you want, you can include the toolbar we created in the other package here with Toolbar()
         // [ES] Si lo deseas, puedes incluir el toolbar que creamos en el otro paquete con Toolbar()
@@ -108,12 +106,12 @@ fun AlignToBottom(content: @Composable () -> Unit) {
 
 @Preview
 @Composable
-fun PreviewBottomNavWithoutLabels() {
+private fun PreviewBottomNavWithoutLabels() {
     BottomNavWithoutLabels()
 }
 
 @Preview
 @Composable
-fun PreviewBottomNavWithLabels() {
+private fun PreviewBottomNavWithLabels() {
     BottomNavWithLabels()
 }

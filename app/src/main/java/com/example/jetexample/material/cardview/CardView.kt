@@ -1,4 +1,4 @@
-package com.example.jetexample.cardview
+package com.example.jetexample.material.cardview
 
 import androidx.compose.foundation.Text
 import androidx.compose.foundation.layout.Column
@@ -39,6 +39,6 @@ fun CardViewDemo(){
 
 @Preview
 @Composable
-fun PreviewCard(){
+private fun PreviewCard(){
     CardViewDemo()
 }

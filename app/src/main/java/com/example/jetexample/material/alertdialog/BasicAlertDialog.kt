@@ -1,4 +1,4 @@
-package com.example.jetexample.alertdialog
+package com.example.jetexample.material.alertdialog
 
 import androidx.compose.foundation.Text
 import androidx.compose.material.AlertDialog
@@ -53,6 +53,6 @@ fun AlertDialogDemo() {
 
 @Preview
 @Composable
-fun AlertDialogPreview(){
+private fun AlertDialogPreview(){
     AlertDialogDemo()
 }

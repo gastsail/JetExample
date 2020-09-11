@@ -32,7 +32,7 @@ fun Counter() {
 
 @Preview
 @Composable
-fun PreviewCounter(){
+private fun PreviewCounter(){
     Counter()
 }
 

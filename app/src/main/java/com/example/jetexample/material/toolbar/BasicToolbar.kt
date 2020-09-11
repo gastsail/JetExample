@@ -1,4 +1,4 @@
-package com.example.jetexample.toolbar
+package com.example.jetexample.material.toolbar
 
 import androidx.compose.foundation.Icon
 import androidx.compose.foundation.Text
@@ -51,6 +51,6 @@ fun Toolbar() {
 
 @Preview
 @Composable
-fun ToolbarPreview(){
+private fun ToolbarPreview(){
     Toolbar()
 }

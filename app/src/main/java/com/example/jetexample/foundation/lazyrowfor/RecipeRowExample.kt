@@ -1,10 +1,10 @@
-package com.example.jetexample.recyclerview
+package com.example.jetexample.foundation.lazyrowfor
 
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.Text
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyColumnFor
+import androidx.compose.foundation.lazy.LazyRowFor
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
@@ -20,7 +20,7 @@ import com.example.jetexample.R
 /**
  * [EN]
  * In this example will be creating a simple [RecyclerView] of recipes with [LazyColumnFor]
-  */
+ */
 
 /**
  * [ES]
@@ -46,7 +46,7 @@ val recipeList = listOf(Recipe(R.drawable.header,"Arrozmate", listOf("Arroz","To
 // [EN] We define each row of the recyclerview
 // [ES] Definimos cada fila del recyclerview
 @Composable
-fun RecipeCard(recipe: Recipe){
+private fun RecipeCard(recipe: Recipe){
     val image = imageResource(R.drawable.header)
     Surface(shape = RoundedCornerShape(8.dp),elevation = 8.dp,modifier = Modifier.padding(8.dp)) {
         Column(modifier = Modifier.padding(16.dp)) {
@@ -64,9 +64,9 @@ fun RecipeCard(recipe: Recipe){
 // [EN] We create a RecipeList with LazyColumnFor (same behaviour as RecyclerView)
 // [ES] Creamos una lista de recetas con LazyColumnFor (mismo comportamiento que RecyclerView)
 @Composable
-fun RecipeList(recipeList:List<Recipe>){
-    LazyColumnFor(items = recipeList) { item ->
-       RecipeCard(recipe = item)
+fun RecipeRowList(recipeList:List<Recipe>){
+    LazyRowFor(items = recipeList) { item ->
+        RecipeCard(recipe = item)
     }
 }
 
@@ -74,6 +74,6 @@ fun RecipeList(recipeList:List<Recipe>){
 // [ES] Mostramos un preview de uno de los items que creamos
 @Preview
 @Composable
-fun RecipePreview(){
+private fun RecipePreview(){
     RecipeCard(recipeList[0])
 }

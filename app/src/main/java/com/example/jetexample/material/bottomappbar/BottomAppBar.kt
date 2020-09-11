@@ -1,4 +1,4 @@
-package com.example.jetexample.bottomappbar
+package com.example.jetexample.material.bottomappbar
 
 import androidx.compose.foundation.Icon
 import androidx.compose.foundation.layout.Spacer
@@ -102,12 +102,12 @@ fun BottomBarWithFab(){
 
 @Preview
 @Composable
-fun BottomBarNoFabPreview(){
+private fun BottomBarNoFabPreview(){
     BottomBarNoFab()
 }
 
 @Preview
 @Composable
-fun BottomBarWithFabPreview(){
+private fun BottomBarWithFabPreview(){
     BottomBarWithFab()
 }
