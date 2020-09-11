@@ -32,7 +32,7 @@ import com.example.jetexample.utils.showMessage
  */
 
 @Composable
-fun Toolbar() {
+fun ToolbarDemo() {
     val context = ContextAmbient.current
     TopAppBar(title = { Text(text = "JetExample") }, navigationIcon = {
         IconButton(onClick = {
@@ -52,5 +52,5 @@ fun Toolbar() {
 @Preview
 @Composable
 private fun ToolbarPreview(){
-    Toolbar()
+    ToolbarDemo()
 }

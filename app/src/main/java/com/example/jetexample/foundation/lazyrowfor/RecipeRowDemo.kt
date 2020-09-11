@@ -1,10 +1,10 @@
-package com.example.jetexample.foundation.lazycolumnfor
+package com.example.jetexample.foundation.lazyrowfor
 
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.Text
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyColumnFor
+import androidx.compose.foundation.lazy.LazyRowFor
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
@@ -20,7 +20,7 @@ import com.example.jetexample.R
 /**
  * [EN]
  * In this example will be creating a simple [RecyclerView] of recipes with [LazyColumnFor]
-  */
+ */
 
 /**
  * [ES]
@@ -64,9 +64,9 @@ private fun RecipeCard(recipe: Recipe){
 // [EN] We create a RecipeList with LazyColumnFor (same behaviour as RecyclerView)
 // [ES] Creamos una lista de recetas con LazyColumnFor (mismo comportamiento que RecyclerView)
 @Composable
-fun RecipeColumnList(recipeList:List<Recipe>){
-    LazyColumnFor(items = recipeList) { item ->
-       RecipeCard(recipe = item)
+fun RecipeRowListDemo(recipeList:List<Recipe>){
+    LazyRowFor(items = recipeList) { item ->
+        RecipeCard(recipe = item)
     }
 }
 

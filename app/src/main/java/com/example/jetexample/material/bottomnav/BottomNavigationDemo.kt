@@ -43,7 +43,7 @@ private val listItems = listOf(
 )
 
 @Composable
-fun BottomNavWithLabels() {
+fun BottomNavWithLabelsDemo() {
     val selectedIndex = remember { mutableStateOf(0) }
     val context = ContextAmbient.current
     AlignToBottom {
@@ -66,7 +66,7 @@ fun BottomNavWithLabels() {
 }
 
 @Composable
-fun BottomNavWithoutLabels() {
+fun BottomNavWithoutLabelsDemo() {
     val selectedIndex = remember { mutableStateOf(0) }
     val context = ContextAmbient.current
     AlignToBottom {
@@ -107,11 +107,11 @@ private fun AlignToBottom(content: @Composable () -> Unit) {
 @Preview
 @Composable
 private fun PreviewBottomNavWithoutLabels() {
-    BottomNavWithoutLabels()
+    BottomNavWithoutLabelsDemo()
 }
 
 @Preview
 @Composable
 private fun PreviewBottomNavWithLabels() {
-    BottomNavWithLabels()
+    BottomNavWithLabelsDemo()
 }

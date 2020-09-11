@@ -30,7 +30,7 @@ import com.example.jetexample.utils.showMessage
  */
 
 @Composable
-fun BottomBarNoFab(){
+fun BottomBarNoFabDemo(){
     val context = ContextAmbient.current
 
     Scaffold(bottomBar = {
@@ -59,7 +59,7 @@ fun BottomBarNoFab(){
 }
 
 @Composable
-fun BottomBarWithFab(){
+fun BottomBarWithFabDemo(){
     val context = ContextAmbient.current
 
     Scaffold(topBar = { },
@@ -103,11 +103,11 @@ fun BottomBarWithFab(){
 @Preview
 @Composable
 private fun BottomBarNoFabPreview(){
-    BottomBarNoFab()
+    BottomBarNoFabDemo()
 }
 
 @Preview
 @Composable
 private fun BottomBarWithFabPreview(){
-    BottomBarWithFab()
+    BottomBarWithFabDemo()
 }
