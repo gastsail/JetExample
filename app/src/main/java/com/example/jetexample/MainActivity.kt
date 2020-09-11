@@ -2,8 +2,15 @@ package com.example.jetexample
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.compose.foundation.Text
+import androidx.compose.foundation.layout.Row
+import androidx.compose.material.MaterialTheme
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.setContent
+import com.example.jetexample.foundation.scrollablecolumn.ScrollableColumnDemo
+import com.example.jetexample.foundation.scrollablerow.ScrollableRowDemo
 import com.example.jetexample.material.snackbar.SnackbarDemo
+import com.example.jetexample.material.switch.SwitchDemo
 
 /**
  * [EN]
@@ -30,6 +37,9 @@ class MainActivity : AppCompatActivity() {
         }
     }
 }
+
+
+
 
 
 
