@@ -1,6 +1,7 @@
 package com.example.jetexample.foundation.clickabletext
 
 import androidx.compose.foundation.ClickableText
+import androidx.compose.foundation.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.ContextAmbient
 import androidx.compose.ui.text.AnnotatedString
@@ -9,6 +10,15 @@ import androidx.compose.ui.unit.sp
 import androidx.ui.tooling.preview.Preview
 import com.example.jetexample.utils.showMessage
 
+/**
+ * [EN]
+ * A continent version of [Text] component to be able to handle click event on the text.
+ */
+
+/**
+ * [ES]
+ * Una version del componente [Text] que registra eventos de click.
+ */
 
 @Composable
 fun ClickableTextDemo(){
