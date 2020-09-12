@@ -3,7 +3,11 @@ package com.example.jetexample
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.ui.platform.setContent
+import com.example.jetexample.foundation.lazycolumnfor.RecipeColumnListDemo
+import com.example.jetexample.foundation.lazycolumnfor.recipeList
+import com.example.jetexample.foundation.lazyrowfor.RecipeRowListDemo
 import com.example.jetexample.foundation.textfield.TextFieldDemo
+import com.example.jetexample.material.alertdialog.AlertDialogDemo
 
 /**
  * [EN]

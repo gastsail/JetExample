@@ -37,14 +37,18 @@ fun AlertDialogDemo() {
                 title = { Text(text = "This is a title") },
                 text = { Text(text = "This is a description") },
                 confirmButton = {
-                    Button(onClick = { alertState.value = false }) {
+                    Button(onClick = {
                         showMessage(context,"Confirm clicked")
+                        alertState.value = false
+                    }) {
                         Text(text = "Confirm")
                     }
                 },
                 dismissButton = {
-                    Button(onClick = { alertState.value = false }) {
+                    Button(onClick = {
                         showMessage(context,"Dismiss clicked")
+                        alertState.value = false
+                    }) {
                         Text(text = "Dismiss")
                     }
                 })
