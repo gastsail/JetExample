@@ -2,6 +2,7 @@ package com.example.jetexample.foundation.lazycolumnfor
 
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.ScrollableColumn
 import androidx.compose.foundation.Text
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumnFor
@@ -40,7 +41,9 @@ data class Recipe(
 val recipeList = listOf(Recipe(R.drawable.header,"Arrozmate", listOf("Arroz","Tomate","Crema")),
         Recipe(R.drawable.header,"Calabaza", listOf("Queso","Azucar","Agua")),
         Recipe(R.drawable.header,"Torta", listOf("Merengue","Chocolate","Vainilla")),
-        Recipe(R.drawable.header,"Torta2", listOf("Merengue2","Chocolate2","Vainilla2")))
+        Recipe(R.drawable.header,"Torta2", listOf("Merengue2","Chocolate2","Vainilla2")),
+        Recipe(R.drawable.header,"TestText", listOf("Merengue2","Chocolate2","Vainilla2")),
+        Recipe(R.drawable.header,"Android", listOf("Merengue2","Chocolate2","Vainilla2")))
 
 
 // [EN] We define each row of the recyclerview
