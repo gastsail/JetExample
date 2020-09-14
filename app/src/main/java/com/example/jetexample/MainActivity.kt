@@ -1,13 +1,15 @@
 package com.example.jetexample
 
 import android.os.Bundle
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.ui.platform.setContent
-import com.example.jetexample.foundation.lazycolumnfor.RecipeColumnListDemo
-import com.example.jetexample.foundation.lazycolumnfor.recipeList
-import com.example.jetexample.foundation.lazyrowfor.RecipeRowListDemo
-import com.example.jetexample.foundation.textfield.TextFieldDemo
-import com.example.jetexample.material.alertdialog.AlertDialogDemo
+import com.example.jetexample.state.livedata.data.UserDataSource
+import com.example.jetexample.state.livedata.domain.RepoImpl
+import com.example.jetexample.state.livedata.presentation.UserViewModel
+import com.example.jetexample.state.livedata.presentation.UserViewModelFactory
+import com.example.jetexample.state.livedata.ui.UserScreen
+
 
 /**
  * [EN]
@@ -25,6 +27,9 @@ import com.example.jetexample.material.alertdialog.AlertDialogDemo
  */
 
 class MainActivity : AppCompatActivity() {
+
+    private val userViewModel by viewModels<UserViewModel> { UserViewModelFactory(RepoImpl(UserDataSource())) }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -34,6 +39,10 @@ class MainActivity : AppCompatActivity() {
         }
     }
 }
+
+
+
+
 
 
 

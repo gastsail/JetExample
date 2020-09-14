@@ -47,6 +47,7 @@ dependencies {
 
     //Fundamental building blocks of Compose's programming model and state management, and core runtime for the Compose Compiler Plugin to target.
     implementation "androidx.compose.runtime:runtime:$compose_version"
+    implementation "androidx.compose.runtime:runtime-livedata:$compose_version"
 
     //Fundamental components of compose UI needed to interact with the device, including layout, drawing, and input.
     implementation "androidx.compose.ui:ui:$compose_version"
@@ -64,6 +65,11 @@ dependencies {
 
     //In charge of annotators like @Preview and tooling for render views
     implementation "androidx.ui:ui-tooling:$compose_version"
+
+    // ktx LivaData
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.3.0-alpha07"
+
+    implementation "androidx.activity:activity-ktx:1.1.0"
 
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
