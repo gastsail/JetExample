@@ -36,6 +36,7 @@ class MainActivity : AppCompatActivity() {
             // [EN] Call here what you want to try out
             // [ES] Llama aqui que es lo que quieres probar
             // Example: Toolbar()
+            UserScreen(userViewModel = userViewModel)
         }
     }
 }

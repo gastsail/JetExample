@@ -1,15 +1,10 @@
 package com.example.jetexample.state.livedata.ui
 
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.Text
-import androidx.compose.foundation.clickable
+import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumnFor
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.Divider
-import androidx.compose.material.EmphasisAmbient
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.ProvideEmphasis
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
@@ -28,6 +23,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.platform.ContextAmbient
 import androidx.compose.ui.unit.TextUnit
+import com.example.jetexample.utils.Result
 import com.example.jetexample.utils.showMessage
 
 /**
@@ -74,13 +70,32 @@ private fun UserList(userList:List<User>){
 
 @Composable
 fun UserScreen(userViewModel:UserViewModel){
-    val items: List<User> by userViewModel.fetchUserList.observeAsState(listOf())
-    UserList(userList = items)
+    val items: Result<List<User>> by userViewModel.fetchUserList.observeAsState(Result.Success(listOf()))
+    when(items){
+        is Result.Loading -> {
+            ShowProgressDialog()
+        }
+        is Result.Success -> {
+            UserList(userList = (items as Result.Success<List<User>>).data)
+        }
+        is Result.Failure -> {
+            // [EN] Since its a synchronous call we do not handle exceptions
+            // [ES] Ya que es una llamada syncrona no manejamos excepciones
+        }
+    }
+}
+
+@Composable
+private fun ShowProgressDialog(){
+    Box(modifier = Modifier.fillMaxSize(),gravity = Alignment.Center){
+        CircularProgressIndicator()
+        Text(text = "Loading...",modifier = Modifier.padding(top = 8.dp))
+    }
 }
 
 
 @Preview(showBackground = true)
 @Composable
 fun UserRowPreview(){
-    UserRow(User("WIP_COIL","Jet Example","Dont forget to star the repo ;)"),onUserClick = {})
+    UserRow(User("WIP_COIL","Gastón Saillén","Android Engineer"),onUserClick = {})
 }

@@ -4,6 +4,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.liveData
 import com.example.jetexample.state.livedata.domain.Repo
+import com.example.jetexample.utils.Result
+import kotlinx.coroutines.delay
 
 class UserViewModel(private val repo:Repo): ViewModel() {
 
@@ -19,6 +21,8 @@ class UserViewModel(private val repo:Repo): ViewModel() {
      * pero recordá utilizar el Dispatchers.IO para operaciones asyncronas
      */
     val fetchUserList = liveData {
+        emit(Result.Loading())
+        delay(2000)
         emit(repo.getUserList())
     }
 }
