@@ -1,5 +1,6 @@
 package com.example.jetexample.state.livedata.ui
 
+import android.graphics.Color
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumnFor
@@ -20,6 +21,7 @@ import com.example.jetexample.state.livedata.presentation.UserViewModel
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.platform.ContextAmbient
+import androidx.compose.ui.res.vectorResource
 import com.example.jetexample.utils.Result
 import com.example.jetexample.utils.showMessage
 
@@ -73,7 +75,11 @@ fun UserScreen(userViewModel:UserViewModel){
             ShowProgressDialog()
         }
         is Result.Success -> {
-            UserList(userList = (items as Result.Success<List<User>>).data)
+            if ((items as Result.Success<List<User>>).data.isNotEmpty()){
+                UserList(userList = (items as Result.Success<List<User>>).data)
+            }else{
+                ShowEmptyList()
+            }
         }
         is Result.Failure -> {
             // [EN] Since its a synchronous call we do not handle exceptions
@@ -87,6 +93,14 @@ private fun ShowProgressDialog(){
     Box(modifier = Modifier.fillMaxSize(),gravity = Alignment.Center){
         CircularProgressIndicator()
         Text(text = "Loading...",modifier = Modifier.padding(top = 8.dp))
+    }
+}
+
+@Composable
+private fun ShowEmptyList(){
+    Box(modifier = Modifier.fillMaxSize(),gravity = Alignment.Center){
+        Image(asset = vectorResource(id = R.drawable.ic_baseline_error_outline_24))
+        Text(text = "There is no data",modifier = Modifier.padding(top = 8.dp))
     }
 }
 
