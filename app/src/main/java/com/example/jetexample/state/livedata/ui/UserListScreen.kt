@@ -11,18 +11,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.imageResource
-import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.ui.tooling.preview.Preview
 import com.example.jetexample.R
 import com.example.jetexample.state.livedata.data.model.User
 import com.example.jetexample.state.livedata.presentation.UserViewModel
-import com.example.jetexample.ui.typography
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.platform.ContextAmbient
-import androidx.compose.ui.unit.TextUnit
 import com.example.jetexample.utils.Result
 import com.example.jetexample.utils.showMessage
 

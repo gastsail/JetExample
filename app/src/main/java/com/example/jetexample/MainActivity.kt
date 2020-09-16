@@ -4,11 +4,11 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.ui.platform.setContent
+import com.example.jetexample.foundation.box.BoxDemo
 import com.example.jetexample.state.livedata.data.UserDataSource
 import com.example.jetexample.state.livedata.domain.RepoImpl
 import com.example.jetexample.state.livedata.presentation.UserViewModel
 import com.example.jetexample.state.livedata.presentation.UserViewModelFactory
-import com.example.jetexample.state.livedata.ui.UserScreen
 
 
 /**
@@ -36,7 +36,6 @@ class MainActivity : AppCompatActivity() {
             // [EN] Call here what you want to try out
             // [ES] Llama aqui que es lo que quieres probar
             // Example: Toolbar()
-            UserScreen(userViewModel = userViewModel)
         }
     }
 }
