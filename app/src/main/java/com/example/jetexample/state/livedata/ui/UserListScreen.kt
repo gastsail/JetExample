@@ -1,6 +1,6 @@
 package com.example.jetexample.state.livedata.ui
 
-import android.graphics.Color
+import androidx.compose.ui.graphics.*
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumnFor
@@ -9,9 +9,7 @@ import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.ui.tooling.preview.Preview
@@ -20,10 +18,13 @@ import com.example.jetexample.state.livedata.data.model.User
 import com.example.jetexample.state.livedata.presentation.UserViewModel
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.drawShadow
 import androidx.compose.ui.platform.ContextAmbient
 import androidx.compose.ui.res.vectorResource
 import com.example.jetexample.utils.Result
 import com.example.jetexample.utils.showMessage
+import dev.chrisbanes.accompanist.coil.CoilImage
 
 /**
  * [EN]
@@ -43,10 +44,9 @@ import com.example.jetexample.utils.showMessage
 @Composable
 private fun UserRow(user:User,onUserClick: (User) -> Unit) {
     Row(modifier = Modifier.clickable(onClick = { onUserClick(user) }).fillMaxWidth().padding(8.dp)) {
-        val imageModifier = Modifier.preferredSize(46.dp).clip(shape = CircleShape)
-        val image = imageResource(id = R.drawable.header)
-        Image(asset = image,modifier = imageModifier,contentScale = ContentScale.Crop)
-        Column (modifier = Modifier.padding(start = 8.dp).gravity(Alignment.CenterVertically)){
+        val imageModifier = Modifier.preferredSize(46.dp).drawShadow(elevation = 4.dp, shape = CircleShape).background(color = Color.White, shape = CircleShape)
+        CoilImage(data = user.profilePicutre,modifier = imageModifier,contentScale = ContentScale.Crop)
+        Column (modifier = Modifier.padding(start = 8.dp).align(Alignment.CenterVertically)){
             Text(text = user.name, fontWeight = FontWeight.Bold, style = MaterialTheme.typography.h6)
             ProvideEmphasis(EmphasisAmbient.current.medium) {
                 Text(text = user.bio,style = MaterialTheme.typography.body2)
@@ -108,5 +108,5 @@ private fun ShowEmptyList(){
 @Preview(showBackground = true)
 @Composable
 fun UserRowPreview(){
-    UserRow(User("WIP_COIL","Gastón Saillén","Android Engineer"),onUserClick = {})
+    UserRow(User("","Gastón Saillén","Android Engineer"),onUserClick = {})
 }
