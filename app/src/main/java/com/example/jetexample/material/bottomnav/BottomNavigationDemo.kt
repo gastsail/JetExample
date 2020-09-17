@@ -54,7 +54,7 @@ fun BottomNavWithLabelsDemo() {
                             Icon(asset = item.icon)
                         },
                         label = { Text(item.title) },
-                        onSelect = {
+                        onClick = {
                             selectedIndex.value = index
                             showMessage(context, "${item.title} selected")
                         },
@@ -77,7 +77,7 @@ fun BottomNavWithoutLabelsDemo() {
                             Icon(asset = item.icon)
                         },
                         label = { Text(item.title) },
-                        onSelect = {
+                        onClick = {
                             selectedIndex.value = index
                             showMessage(context, "${item.title} selected")
                         },
