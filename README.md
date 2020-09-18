@@ -8,7 +8,7 @@
 ![image](https://miro.medium.com/max/7086/1*CteVW3NQ6RR4mQ2bsL9SGQ.png)
 
 
-This is a repository that shows how to create different portions of UI by example.
+This is a repository that shows how to create different portions of UI by example. Learn how to create different Composable functions just by reading the different packages (Material, Foundation, State and more ! )
 
 
 # Run examples
