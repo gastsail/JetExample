@@ -21,7 +21,7 @@ If you want to contribute with more examples, feel free to make a PR
 # Environment
 - At the time this examples runs on Android Studio Canary 4.2 Preview 2 (Canary 9)
 - Compiler version: 1.4.0
-- Compose version: 1.0.0-alpha02
+- Compose version: 1.0.0-alpha03
 
 # Support 😄
 If this repo helped you , you can join the [stargazers](https://github.com/gastsail/TragosApp/stargazers) for this repo ⭐
