@@ -13,3 +13,4 @@
 .externalNativeBuild
 .cxx
 local.properties
+/jetpoll/google-services.json

@@ -29,7 +29,6 @@ import com.example.jetexample.material.slider.SliderDemo
 import com.example.jetexample.material.snackbar.SnackbarDemo
 import com.example.jetexample.material.switch.SwitchDemo
 import com.example.jetexample.material.toolbar.ToolbarDemo
-import com.example.jetexample.pagination.PaginationDemo
 import com.example.jetexample.state.livedata.data.UserDataSource
 import com.example.jetexample.state.livedata.domain.RepoImpl
 import com.example.jetexample.state.livedata.presentation.UserViewModel

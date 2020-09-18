@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'com.google.gms.google-services'
 }
 
 android {
@@ -71,6 +72,7 @@ dependencies {
 
     implementation "androidx.activity:activity-ktx:1.1.0"
     implementation "dev.chrisbanes.accompanist:accompanist-coil:0.2.2"
+    implementation 'com.google.firebase:firebase-firestore:21.6.0'
 
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
