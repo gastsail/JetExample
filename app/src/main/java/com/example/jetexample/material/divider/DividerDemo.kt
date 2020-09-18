@@ -29,7 +29,7 @@ fun DividerDemo(){
 }
 
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 private fun DividerDemoPreview(){
     DividerDemo()

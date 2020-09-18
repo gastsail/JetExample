@@ -27,7 +27,7 @@ fun ScrollableRowDemo() {
     })
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 private fun ScrollableRowPreview(){
     ScrollableRowDemo()

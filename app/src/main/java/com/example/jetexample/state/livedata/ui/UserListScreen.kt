@@ -46,7 +46,7 @@ private fun UserRow(user:User,onUserClick: (User) -> Unit) {
     Row(modifier = Modifier.clickable(onClick = { onUserClick(user) }).fillMaxWidth().padding(8.dp)) {
         val imageModifier = Modifier.preferredSize(46.dp).drawShadow(elevation = 4.dp, shape = CircleShape).background(color = Color.White, shape = CircleShape)
         CoilImage(data = user.profilePicutre,modifier = imageModifier,contentScale = ContentScale.Crop)
-        Column (modifier = Modifier.padding(start = 8.dp).align(Alignment.CenterVertically)){
+        Column(modifier = Modifier.padding(start = 8.dp).align(Alignment.CenterVertically)){
             Text(text = user.name, fontWeight = FontWeight.Bold, style = MaterialTheme.typography.h6)
             ProvideEmphasis(EmphasisAmbient.current.medium) {
                 Text(text = user.bio,style = MaterialTheme.typography.body2)

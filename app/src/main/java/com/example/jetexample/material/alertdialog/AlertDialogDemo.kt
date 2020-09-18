@@ -55,7 +55,7 @@ fun AlertDialogDemo() {
     }
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 private fun AlertDialogPreview(){
     AlertDialogDemo()

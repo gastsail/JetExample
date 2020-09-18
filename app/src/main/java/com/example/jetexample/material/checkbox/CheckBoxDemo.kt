@@ -36,7 +36,7 @@ fun CheckBoxDemo() {
 }
 
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 private fun CheckBoxPreview(){
         CheckBoxDemo()

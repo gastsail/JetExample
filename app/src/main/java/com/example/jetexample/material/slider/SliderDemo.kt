@@ -33,7 +33,7 @@ fun SliderDemo() {
 }
 
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 private fun SliderDemoPreview(){
     SliderDemo()

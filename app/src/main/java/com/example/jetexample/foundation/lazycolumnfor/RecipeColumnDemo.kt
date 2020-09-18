@@ -7,6 +7,7 @@ import androidx.compose.foundation.Text
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumnFor
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.Card
 import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -53,7 +54,7 @@ val recipeList = listOf(Recipe(R.drawable.header,"Arrozmate", listOf("Arroz","To
 @Composable
 private fun RecipeCard(recipe: Recipe){
     val image = imageResource(R.drawable.header)
-    Surface(shape = RoundedCornerShape(8.dp),elevation = 8.dp,modifier = Modifier.padding(8.dp)) {
+    Card(shape = RoundedCornerShape(8.dp),elevation = 8.dp,modifier = Modifier.padding(8.dp)) {
         Column(modifier = Modifier.padding(16.dp)) {
             val imageModifier = Modifier.preferredHeight(150.dp).fillMaxWidth().clip(shape = RoundedCornerShape(8.dp))
             Image(asset = image,modifier = imageModifier,contentScale = ContentScale.Crop)
@@ -77,7 +78,7 @@ fun RecipeColumnListDemo(recipeList:List<Recipe>){
 
 // [EN] Rendering a preview with the first item of the list
 // [ES] Mostramos un preview de uno de los items que creamos
-@Preview
+@Preview(showBackground = true)
 @Composable
 private fun RecipePreview(){
     RecipeCard(recipeList[0])

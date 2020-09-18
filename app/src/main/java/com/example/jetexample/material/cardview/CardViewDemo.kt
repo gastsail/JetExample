@@ -37,7 +37,7 @@ fun CardViewDemo(){
     }
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 private fun PreviewCard(){
     CardViewDemo()

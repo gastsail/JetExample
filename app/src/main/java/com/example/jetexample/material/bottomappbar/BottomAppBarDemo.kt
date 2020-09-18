@@ -1,6 +1,7 @@
 package com.example.jetexample.material.bottomappbar
 
 import androidx.compose.foundation.Icon
+import androidx.compose.foundation.Text
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.*
@@ -13,6 +14,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.ContextAmbient
 import androidx.ui.tooling.preview.Preview
+import com.example.jetexample.material.toolbar.ToolbarDemo
 import com.example.jetexample.utils.showMessage
 
 /**
@@ -35,19 +37,21 @@ fun BottomBarNoFabDemo(){
 
     Scaffold(bottomBar = {
         BottomAppBar {
-            IconButton(onClick = { /* doSomething() */ }) {
+            IconButton(onClick = {
+                showMessage(context, "Drawer action click")
+            }) {
                 Icon(Icons.Filled.Menu)
             }
             // [EN] The actions should be at the end of the BottomAppBar
             // [ES] Alineamos las acciones al final del bottom bar
             Spacer(Modifier.weight(1f, true))
             IconButton(onClick = {
-                showMessage(context,"Favorite action clicked")
+                showMessage(context, "Favorite action clicked")
             }) {
                 Icon(Icons.Filled.Favorite)
             }
             IconButton(onClick = {
-                showMessage(context,"Call action clicked")
+                showMessage(context, "Call action clicked")
             }) {
                 Icon(Icons.Filled.Call)
             }
@@ -100,13 +104,13 @@ fun BottomBarWithFabDemo(){
     }
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 private fun BottomBarNoFabPreview(){
     BottomBarNoFabDemo()
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 private fun BottomBarWithFabPreview(){
     BottomBarWithFabDemo()

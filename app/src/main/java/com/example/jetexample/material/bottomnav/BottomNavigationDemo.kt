@@ -104,13 +104,13 @@ private fun AlignToBottom(content: @Composable () -> Unit) {
             })
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 private fun PreviewBottomNavWithoutLabels() {
     BottomNavWithoutLabelsDemo()
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 private fun PreviewBottomNavWithLabels() {
     BottomNavWithLabelsDemo()

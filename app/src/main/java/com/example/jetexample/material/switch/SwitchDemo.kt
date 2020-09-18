@@ -31,8 +31,8 @@ fun SwitchDemo() {
         )
 }
 
+@Preview(showBackground = true)
 @Composable
-@Preview
 private fun SwitchPreview(){
         SwitchDemo()
 }

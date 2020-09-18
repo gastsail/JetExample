@@ -30,7 +30,7 @@ fun Counter() {
     }
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 private fun PreviewCounter(){
     Counter()

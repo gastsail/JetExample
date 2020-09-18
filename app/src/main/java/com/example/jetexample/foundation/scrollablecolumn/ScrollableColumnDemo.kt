@@ -33,7 +33,7 @@ fun ScrollableColumnDemo() {
     })
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 private fun ScrollableColumnPreview(){
     ScrollableColumnDemo()

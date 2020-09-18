@@ -49,7 +49,7 @@ fun ToolbarDemo() {
     })
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 private fun ToolbarPreview(){
     ToolbarDemo()

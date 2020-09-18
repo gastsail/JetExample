@@ -37,11 +37,11 @@ fun TextFieldDemo(){
             modifier = Modifier.fillMaxWidth().padding(16.dp),
             value = text.value,
             onValueChange = { text.value = it },
-            label = {Text("This is a label")})
+            label = { Text("This is a label") })
 }
 
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 private fun TextFieldPreview(){
     TextFieldDemo()

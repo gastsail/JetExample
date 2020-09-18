@@ -33,7 +33,7 @@ fun BoxDemo(){
     }
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 private fun BoxDemoPreview(){
     BoxDemo()

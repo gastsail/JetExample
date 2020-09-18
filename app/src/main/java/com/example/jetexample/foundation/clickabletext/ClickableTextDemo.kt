@@ -25,13 +25,13 @@ fun ClickableTextDemo(){
     val context = ContextAmbient.current
     ClickableText(
             text = AnnotatedString(text = "This is a clickable text, please click me",
-            spanStyle = SpanStyle(fontSize = 20.sp)),
+                spanStyle = SpanStyle(fontSize = 20.sp)),
             onClick = {
         showMessage(context,"Thanks for clicking me :)")
     })
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 private fun ClickableTextPreview(){
     ClickableTextDemo()

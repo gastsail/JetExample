@@ -53,7 +53,7 @@ fun SnackbarDemo() {
     }
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 private fun SnackBarPreview(){
     SnackbarDemo()
