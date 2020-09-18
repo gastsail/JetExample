@@ -1,3 +1,3 @@
 rootProject.name = "JetExample"
-include ':app'
+include ':components'
 include ':jetpoll'
