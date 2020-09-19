@@ -56,7 +56,7 @@ private fun RecipeCard(recipe: Recipe){
     val image = imageResource(R.drawable.header)
     Card(shape = RoundedCornerShape(8.dp),elevation = 8.dp,modifier = Modifier.padding(8.dp)) {
         Column(modifier = Modifier.padding(16.dp)) {
-            val imageModifier = Modifier.preferredHeight(150.dp).fillMaxWidth().clip(shape = RoundedCornerShape(C))
+            val imageModifier = Modifier.preferredHeight(150.dp).fillMaxWidth().clip(shape = RoundedCornerShape(8.dp))
             Image(asset = image,modifier = imageModifier,contentScale = ContentScale.Crop)
             Spacer(modifier = Modifier.preferredHeight(16.dp))
             Text(text = recipe.title,style = typography.h6)
