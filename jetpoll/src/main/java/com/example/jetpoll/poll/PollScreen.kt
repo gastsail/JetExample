@@ -28,8 +28,8 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.sp
-import com.example.jetpoll.R
 import com.example.jetpoll.data.model.Option
+import com.example.jetpoll.ui.typography
 import com.example.jetpoll.utils.showMessage
 import dev.chrisbanes.accompanist.coil.CoilImage
 
@@ -60,6 +60,7 @@ private fun PollComponent(
             }, modifier = Modifier.width(200.dp).align(Alignment.CenterHorizontally).clip(CircleShape)) {
                 Text(text = "View poll")
             }
+            Spacer(modifier = Modifier.padding(bottom = 8.dp))
         }
     }
 }
@@ -71,6 +72,23 @@ private fun ProfileComponent(username:String,userphoto:String){
         CoilImage(data = userphoto,modifier = imageModifier,contentScale = ContentScale.Crop)
         Column(modifier = Modifier.padding(start = 8.dp).align(Alignment.CenterVertically)){
             Text(text = username, fontWeight = FontWeight.Bold, fontSize = 16.sp)
+        }
+    }
+}
+
+@Composable
+private fun CreatePollComponent(username:String,onCreatePollClick: () -> Unit,userphoto:String) {
+    Column(modifier = Modifier.padding(16.dp)){
+        Row {
+            Text(text = "Bienvenido $username",modifier = Modifier.weight(1f),style = typography.h5)
+            val imageModifier = Modifier.preferredSize(35.dp).drawShadow(elevation = 4.dp, shape = CircleShape).background(color = Color.White, shape = CircleShape)
+            CoilImage(data = userphoto,modifier = imageModifier,contentScale = ContentScale.Crop)
+        }
+        Spacer(modifier = Modifier.padding(top = 8.dp))
+        Text(text = "Create poll and ask your friends about their opinions.",textAlign = TextAlign.Center,style = typography.body2)
+        Spacer(modifier = Modifier.padding(16.dp))
+        Button(shape = CircleShape,onClick = { onCreatePollClick() }){
+            Text("Create")
         }
     }
 }
@@ -102,6 +120,9 @@ private fun PollList(pollList: List<Poll>) {
     }
 }
 
+
+
+
 @Composable
 private fun ShowProgress() {
     Box(modifier = Modifier.fillMaxSize(), gravity = Alignment.Center) {
@@ -128,8 +149,8 @@ private fun PreviewPollScreen() {
     )
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
-private fun PreviewProfileComponent(){
-    ProfileComponent(username = "Gastón Saillén","")
+private fun PreviewCreatePollComponent(){
+    CreatePollComponent(onCreatePollClick = {},username = "Gastón Saillén")
 }
