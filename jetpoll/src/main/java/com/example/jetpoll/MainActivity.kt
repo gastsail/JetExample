@@ -32,7 +32,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             PollScreen(viewModel = viewModel)
-
         }
     }
 }

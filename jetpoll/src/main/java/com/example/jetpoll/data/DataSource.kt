@@ -19,11 +19,11 @@ class DataSource {
         return Result.Success(pollList.toList())
     }
 
-    val dummyPollList = Result.Success(listOf(Poll(username = "Lionel Messi",
-            userphoto = "https://www.mykhel.com/thumb/250x90x250/football/players/4/19054.jpg",
+    val dummyPollList = Result.Success(listOf(Poll(userName = "Lionel Messi",
+            userPhoto = "https://www.mykhel.com/thumb/250x90x250/football/players/4/19054.jpg",
             question = "How many cups of coffee you drink each day ? ☕", listOf(Option(3,"1 cups"),Option(6,"2 cups"),Option(1,"3 cups"))
-    ),Poll(username = "Gastón Saillén",
-            userphoto = "https://avatars2.githubusercontent.com/u/24615408?s=460&u=8a985792aa795ada276b4d567baba1c732ab02fb&v=4",
+    ),Poll(userName = "Gastón Saillén",
+            userPhoto = "https://avatars2.githubusercontent.com/u/24615408?s=460&u=8a985792aa795ada276b4d567baba1c732ab02fb&v=4",
             question = "Do you like dogs ? ", listOf(Option(3,"Yes :D"),Option(6,"Maybe :/"),Option(1,"No >:("))
     )))
 }
