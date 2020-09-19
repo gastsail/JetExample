@@ -3,9 +3,8 @@ package com.example.jetpoll.poll
 import android.util.Log
 import androidx.compose.foundation.Box
 import androidx.compose.foundation.Text
-import androidx.compose.foundation.clickable
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.layout.RowScope.align
 import androidx.compose.foundation.lazy.LazyRowFor
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -21,23 +20,36 @@ import com.example.jetpoll.vo.*
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.drawShadow
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.ContextAmbient
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.TextUnit
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.sp
+import com.example.jetpoll.R
 import com.example.jetpoll.data.model.Option
 import com.example.jetpoll.utils.showMessage
+import dev.chrisbanes.accompanist.coil.CoilImage
 
 @Composable
-private fun PollComponent(poll: Poll, onOptionClick: (Option) -> Unit, onViewPollClick: (Poll) -> Unit) {
-    Card(modifier = Modifier.width(300.dp).padding(16.dp),elevation = 8.dp,shape = RoundedCornerShape(8.dp)) {
+private fun PollComponent(
+        modifier: Modifier = Modifier,
+        poll: Poll,
+        onOptionClick: (Option) -> Unit,
+        onViewPollClick: (Poll) -> Unit) {
+
+    Card(modifier = modifier, elevation = 8.dp, shape = RoundedCornerShape(8.dp)) {
         Column(modifier = Modifier.padding(8.dp)) {
-            Text(text = poll.question,modifier = Modifier.fillMaxWidth(),style = TextStyle(fontSize = 24.sp),fontWeight = FontWeight.Bold)
-            Spacer(modifier = Modifier.padding(top = 16.dp))
+            Column(modifier = Modifier.height(140.dp)) {
+                ProfileComponent()
+                Text(text = poll.question, modifier = Modifier.fillMaxWidth(), fontSize = 24.sp, fontWeight = FontWeight.Bold)
+            }
+            Spacer(modifier = Modifier.padding(top = 8.dp))
             for (option in poll.options) {
-                OutlinedButton(modifier = Modifier.fillMaxWidth().padding(top = 4.dp,end = 8.dp,start = 8.dp),onClick = {onOptionClick(option)}) {
-                    Text(text = option.name)
+                OutlinedButton(modifier = Modifier.fillMaxWidth().padding(top = 4.dp, end = 8.dp, start = 8.dp), onClick = { onOptionClick(option) }) {
+                    Text(text = option.name, maxLines = 1)
                 }
             }
 
@@ -45,7 +57,7 @@ private fun PollComponent(poll: Poll, onOptionClick: (Option) -> Unit, onViewPol
 
             Button(onClick = {
                 onViewPollClick(poll)
-            },modifier = Modifier.width(200.dp).align(Alignment.CenterHorizontally).clip(CircleShape)) {
+            }, modifier = Modifier.width(200.dp).align(Alignment.CenterHorizontally).clip(CircleShape)) {
                 Text(text = "View poll")
             }
         }
@@ -53,16 +65,14 @@ private fun PollComponent(poll: Poll, onOptionClick: (Option) -> Unit, onViewPol
 }
 
 @Composable
-private fun PollList(pollList: List<Poll>) {
-    val context = ContextAmbient.current
-        LazyRowFor(items = pollList) { poll ->
-            PollComponent(poll = poll,
-                    onOptionClick = { option ->
-                        showMessage(context,"Voted for $option")
-                    }, onViewPollClick = {
-                showMessage(context,"Clicked to view poll results")
-            })
+private fun ProfileComponent(){
+    Row(modifier = Modifier.fillMaxWidth().padding(8.dp)) {
+        val imageModifier = Modifier.preferredSize(35.dp).drawShadow(elevation = 4.dp, shape = CircleShape).background(color = Color.White, shape = CircleShape)
+        CoilImage(data = "https://www.weact.org/wp-content/uploads/2016/10/Blank-profile.png",modifier = imageModifier,contentScale = ContentScale.Crop)
+        Column(modifier = Modifier.padding(start = 8.dp).align(Alignment.CenterVertically)){
+            Text(text = "Test Name", fontWeight = FontWeight.Bold, fontSize = 16.sp)
         }
+    }
 }
 
 
@@ -73,6 +83,22 @@ fun PollScreen(viewModel: PollViewModel) {
         is Result.Loading -> ShowProgress()
         is Result.Success -> PollList(pollList = (pollResult as Result.Success<List<Poll>>).data)
         is Result.Failure -> ShowError((pollResult as Result.Failure<List<Poll>>).exception)
+    }
+}
+
+@Composable
+private fun PollList(pollList: List<Poll>) {
+    val context = ContextAmbient.current
+    Column {
+        Text(modifier = Modifier.padding(start = 16.dp,top = 8.dp),text = "All Polls",fontSize = 20.sp,fontWeight = FontWeight.Bold,style = TextStyle(color = Color.Gray ))
+        LazyRowFor(items = pollList) { poll ->
+            PollComponent(modifier = Modifier.width(300.dp).padding(16.dp) ,poll = poll,
+                    onOptionClick = { option ->
+                        showMessage(context, "Voted for $option")
+                    }, onViewPollClick = {
+                showMessage(context, "Clicked to view poll results")
+            })
+        }
     }
 }
 
@@ -98,6 +124,12 @@ fun PreviewPollScreen() {
             poll = Poll(
                     "How many cups of coffee you drink each day ?",
                     listOf(Option(name = "1 cups"), Option(name = "2 cups"), Option(name = "3 cups"))
-            ),onViewPollClick = {},onOptionClick = {}
+            ), onViewPollClick = {}, onOptionClick = {}
     )
+}
+
+@Preview
+@Composable
+private fun PreviewProfileComponent(){
+    ProfileComponent()
 }
