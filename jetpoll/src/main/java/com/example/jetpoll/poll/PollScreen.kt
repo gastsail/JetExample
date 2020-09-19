@@ -152,5 +152,5 @@ private fun PreviewPollScreen() {
 @Preview(showBackground = true)
 @Composable
 private fun PreviewCreatePollComponent(){
-    CreatePollComponent(onCreatePollClick = {},username = "Gastón Saillén")
+    CreatePollComponent(onCreatePollClick = {},username = "Gastón Saillén",userphoto = "")
 }
