@@ -43,7 +43,7 @@ private fun PollComponent(
     Card(modifier = modifier, elevation = 8.dp, shape = RoundedCornerShape(8.dp)) {
         Column(modifier = Modifier.padding(8.dp)) {
             Column(modifier = Modifier.height(140.dp)) {
-                ProfileComponent()
+                ProfileComponent(poll.username,poll.userphoto)
                 Text(text = poll.question, modifier = Modifier.fillMaxWidth(), fontSize = 24.sp, fontWeight = FontWeight.Bold)
             }
             Spacer(modifier = Modifier.padding(top = 8.dp))
@@ -65,12 +65,12 @@ private fun PollComponent(
 }
 
 @Composable
-private fun ProfileComponent(){
+private fun ProfileComponent(username:String,userphoto:String){
     Row(modifier = Modifier.fillMaxWidth().padding(8.dp)) {
         val imageModifier = Modifier.preferredSize(35.dp).drawShadow(elevation = 4.dp, shape = CircleShape).background(color = Color.White, shape = CircleShape)
-        CoilImage(data = "https://www.weact.org/wp-content/uploads/2016/10/Blank-profile.png",modifier = imageModifier,contentScale = ContentScale.Crop)
+        CoilImage(data = userphoto,modifier = imageModifier,contentScale = ContentScale.Crop)
         Column(modifier = Modifier.padding(start = 8.dp).align(Alignment.CenterVertically)){
-            Text(text = "Test Name", fontWeight = FontWeight.Bold, fontSize = 16.sp)
+            Text(text = username, fontWeight = FontWeight.Bold, fontSize = 16.sp)
         }
     }
 }
@@ -119,10 +119,10 @@ private fun ShowError(exception: Exception) {
 
 @Preview
 @Composable
-fun PreviewPollScreen() {
+private fun PreviewPollScreen() {
     PollComponent(
-            poll = Poll(
-                    "How many cups of coffee you drink each day ?",
+            poll = Poll(username = "Gastón Saillén",userphoto = "",
+                    question = "How many cups of coffee you drink each day ?",
                     listOf(Option(name = "1 cups"), Option(name = "2 cups"), Option(name = "3 cups"))
             ), onViewPollClick = {}, onOptionClick = {}
     )
@@ -131,5 +131,5 @@ fun PreviewPollScreen() {
 @Preview
 @Composable
 private fun PreviewProfileComponent(){
-    ProfileComponent()
+    ProfileComponent(username = "Gastón Saillén","")
 }
