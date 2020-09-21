@@ -22,6 +22,7 @@ The project uses
 - Accompanist 
 - Jetpack Compose
 - Firebase
+- Coroutines
 
 ![poll](https://i.imgur.com/xpUyuie.jpg)
 
