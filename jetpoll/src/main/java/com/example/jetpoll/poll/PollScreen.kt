@@ -5,6 +5,8 @@ import androidx.compose.foundation.Box
 import androidx.compose.foundation.Text
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.ColumnScope.align
+import androidx.compose.foundation.layout.RowScope.weight
 import androidx.compose.foundation.lazy.LazyRowFor
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -22,8 +24,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.drawShadow
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.LinearGradientShader
+import androidx.compose.ui.graphics.VerticalGradient
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.ContextAmbient
+import androidx.compose.ui.platform.DensityAmbient
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -78,7 +83,7 @@ private fun ProfileComponent(username:String,userphoto:String){
 
 @Composable
 private fun CreatePollComponent(modifier: Modifier = Modifier,username:String,onCreatePollClick: () -> Unit,userphoto:String) {
-    Column(modifier = modifier.padding(start = 32.dp,end = 32.dp,top = 32.dp,bottom = 32.dp)){
+    Column(modifier = modifier){
         Row {
             Text(text = "Welcome $username",modifier = Modifier.weight(1f),style = typography.h5,fontWeight = FontWeight.Bold)
             val imageModifier = Modifier.preferredSize(45.dp).drawShadow(elevation = 4.dp, shape = CircleShape).background(color = Color.White, shape = CircleShape)
@@ -124,19 +129,9 @@ private fun PollListComponent(modifier: Modifier = Modifier, pollList: List<Poll
 
 @Composable
 private fun PollConstrainScreen(pollList:List<Poll>,user: User){
-    val context = ContextAmbient.current
-    ConstraintLayout {
-    val (createpoll, listpoll) = createRefs()
-
-        CreatePollComponent(username =user.userName, userphoto = user.userPhoto, onCreatePollClick ={
-            showMessage(context,"Create poll click")
-        },modifier = Modifier.constrainAs(createpoll) {
-            top.linkTo(parent.top, margin = 16.dp)
-        })
-
-        PollListComponent(pollList = pollList,modifier = Modifier.padding(start = 16.dp).constrainAs(listpoll){
-            top.linkTo(createpoll.bottom,margin = 16.dp)
-        })
+    Column(modifier = Modifier.fillMaxHeight()) {
+        CreatePollComponent(modifier = Modifier.fillMaxWidth().padding(start = 32.dp,end = 32.dp,top = 32.dp).weight(1f),username = user.userName, onCreatePollClick = {}, userphoto = user.userPhoto)
+        PollListComponent(modifier = Modifier.padding(bottom = 32.dp),pollList = pollList)
     }
 }
 
