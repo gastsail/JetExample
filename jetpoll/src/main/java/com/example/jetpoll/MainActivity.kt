@@ -4,13 +4,11 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.ui.platform.setContent
-import androidx.lifecycle.Observer
 import com.example.jetpoll.data.DataSource
 import com.example.jetpoll.domain.RepoImpl
-import com.example.jetpoll.poll.PollScreen
+import com.example.jetpoll.ui.home.PollMain
 import com.example.jetpoll.presentation.PollViewModel
 import com.example.jetpoll.presentation.PollViewModelFactory
-import com.example.jetpoll.vo.Result
 
 /**
  * [EN]
@@ -31,7 +29,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            PollScreen(viewModel = viewModel)
+            PollMain(viewModel = viewModel,backDispatcher = onBackPressedDispatcher)
         }
     }
 }
