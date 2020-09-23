@@ -31,7 +31,7 @@ fun PollMain(viewModel: PollViewModel, backDispatcher: OnBackPressedDispatcher) 
                         PollHome(viewModel = viewModel,onCreatePollClick = actions.createPoll)
                     }
                     is Destination.CreatePoll -> {
-                        CreatePollScreen()
+                        CreatePollScreen(viewModel)
                     }
                 }
             }

@@ -19,6 +19,11 @@ class DataSource {
         return Result.Success(pollList.toList())
     }
 
+    suspend fun createPoll(poll:Poll): Result<Unit>{
+        pollReference.add(poll).await()
+        return Result.Success(Unit)
+    }
+
     val dummyPollList = Result.Success(listOf(Poll(userName = "Lionel Messi",
             userPhoto = "https://www.mykhel.com/thumb/250x90x250/football/players/4/19054.jpg",
             question = "How many cups of coffee you drink each day ? ☕", listOf(Option(3,"1 cups"),Option(6,"2 cups"),Option(1,"3 cups"))
