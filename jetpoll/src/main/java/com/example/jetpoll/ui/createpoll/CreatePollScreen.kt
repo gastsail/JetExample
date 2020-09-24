@@ -1,6 +1,5 @@
 package com.example.jetpoll.ui.createpoll
 
-import androidx.compose.foundation.Box
 import androidx.compose.foundation.Text
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
@@ -8,6 +7,8 @@ import androidx.compose.material.Button
 import androidx.compose.material.Card
 import androidx.compose.material.TextField
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -19,9 +20,15 @@ import androidx.ui.tooling.preview.Preview
 import com.example.jetpoll.data.model.Option
 import com.example.jetpoll.data.model.Poll
 import com.example.jetpoll.presentation.PollViewModel
+import com.example.jetpoll.utils.ShowError
+import com.example.jetpoll.utils.ShowProgress
+import com.example.jetpoll.utils.showMessage
+import com.example.jetpoll.vo.Result
 
 @Composable
 fun CreatePollScreen(viewModel:PollViewModel){
+    val pollResult: Result<Unit> by viewModel.createPoll.observeAsState(Result.Success(Unit))
+    val context = ContextAmbient.current
     val text = remember { mutableStateOf(TextFieldValue("")) }
     val answer1 = remember { mutableStateOf(TextFieldValue("")) }
     val answer2 = remember { mutableStateOf(TextFieldValue("")) }
@@ -48,14 +55,26 @@ fun CreatePollScreen(viewModel:PollViewModel){
                 onValueChange = { answer3.value = it },
                 label = { Text("Answer 3") })
 
-            Button(modifier = Modifier.preferredSize(120.dp,50.dp).padding(bottom = 8.dp).align(Alignment.CenterHorizontally),
-                shape = CircleShape,
-                onClick = {
-                    viewModel.createPoll(Poll("gastsail","",text.value.text, listOf(Option(name = answer1.value.text),Option(name = answer2.value.text),Option(name = answer3.value.text))))
-                }
-                ){
+            Button(modifier = Modifier.preferredSize(120.dp, 50.dp).padding(bottom = 8.dp).align(Alignment.CenterHorizontally),
+                    shape = CircleShape,
+                    onClick = {
+                        viewModel.setPoll(Poll("gastsail", "", text.value.text, listOf(Option(name = answer1.value.text), Option(name = answer2.value.text), Option(name = answer3.value.text))))
+                    }
+            ){
                 Text("Create")
             }
+        }
+    }
+
+    when (pollResult) {
+        is Result.Loading -> {
+            ShowProgress()
+        }
+        is Result.Success -> {
+            showMessage(context, "Poll created :)")
+        }
+        is Result.Failure -> {
+            ShowError(exception = (pollResult as Result.Failure<Unit>).exception)
         }
     }
 }

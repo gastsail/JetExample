@@ -1,5 +1,6 @@
 package com.example.jetpoll.data
 
+import android.util.Log
 import com.example.jetpoll.data.model.Option
 import com.example.jetpoll.data.model.Poll
 import com.example.jetpoll.vo.Result
