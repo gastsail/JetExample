@@ -5,5 +5,5 @@ import com.example.jetpoll.vo.Result
 
 interface Repo {
     suspend fun getAllPolls(): Result<List<Poll>>
-    suspend fun createPoll(poll:Poll): Result<Unit>
+    suspend fun createPoll(poll:Poll): Result<Boolean>
 }

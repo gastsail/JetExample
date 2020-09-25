@@ -20,9 +20,9 @@ class DataSource {
         return Result.Success(pollList.toList())
     }
 
-    suspend fun createPoll(poll:Poll): Result<Unit>{
+    suspend fun createPoll(poll:Poll): Result<Boolean>{
         pollReference.add(poll).await()
-        return Result.Success(Unit)
+        return Result.Success(true)
     }
 
     val dummyPollList = Result.Success(listOf(Poll(userName = "Lionel Messi",

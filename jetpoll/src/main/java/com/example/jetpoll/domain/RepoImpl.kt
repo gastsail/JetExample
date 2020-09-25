@@ -6,5 +6,5 @@ import com.example.jetpoll.vo.Result
 
 class RepoImpl(private val dataSource: DataSource):Repo{
     override suspend fun getAllPolls(): Result<List<Poll>> = dataSource.dummyPollList
-    override suspend fun createPoll(poll: Poll): Result<Unit> = dataSource.createPoll(poll)
+    override suspend fun createPoll(poll: Poll): Result<Boolean> = dataSource.createPoll(poll)
 }
