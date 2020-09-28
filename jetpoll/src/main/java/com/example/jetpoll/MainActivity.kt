@@ -9,6 +9,9 @@ import com.example.jetpoll.domain.RepoImpl
 import com.example.jetpoll.ui.home.PollMain
 import com.example.jetpoll.presentation.PollViewModel
 import com.example.jetpoll.presentation.PollViewModelFactory
+import com.example.jetpoll.ui.login.LoginScreen
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 
 /**
  * [EN]
@@ -25,11 +28,17 @@ import com.example.jetpoll.presentation.PollViewModelFactory
 class MainActivity : AppCompatActivity() {
 
     private val viewModel by viewModels<PollViewModel> { PollViewModelFactory(RepoImpl(DataSource())) }
+    private var currentUser: FirebaseUser? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        currentUser = FirebaseAuth.getInstance().currentUser
         setContent {
-            PollMain(viewModel = viewModel,backDispatcher = onBackPressedDispatcher)
+            if(currentUser != null){
+                PollMain(viewModel = viewModel,backDispatcher = onBackPressedDispatcher)
+            }else{
+                LoginScreen()
+            }
         }
     }
 }

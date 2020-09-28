@@ -76,11 +76,15 @@ dependencies {
     // ktx LivaData
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.3.0-alpha07"
 
+    //Coroutines with Firebase
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.3.5'
+
+    //Firebase
+    implementation 'com.google.firebase:firebase-auth:19.4.0'
+    implementation 'com.google.firebase:firebase-firestore:21.6.0'
 
     implementation "androidx.activity:activity-ktx:1.1.0"
     implementation "dev.chrisbanes.accompanist:accompanist-coil:0.2.2"
-    implementation 'com.google.firebase:firebase-firestore:21.6.0'
 
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
