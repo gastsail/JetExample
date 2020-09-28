@@ -1,5 +1,6 @@
 package com.example.jetpoll
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -9,7 +10,6 @@ import com.example.jetpoll.domain.RepoImpl
 import com.example.jetpoll.ui.home.PollMain
 import com.example.jetpoll.presentation.PollViewModel
 import com.example.jetpoll.presentation.PollViewModelFactory
-import com.example.jetpoll.ui.login.LoginScreen
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 
@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity() {
             if(currentUser != null){
                 PollMain(viewModel = viewModel,backDispatcher = onBackPressedDispatcher)
             }else{
-                LoginScreen()
+                startActivity(Intent(this,LoginActivity::class.java))
             }
         }
     }

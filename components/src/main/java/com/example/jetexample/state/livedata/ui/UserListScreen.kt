@@ -18,7 +18,6 @@ import com.example.jetexample.state.livedata.data.model.User
 import com.example.jetexample.state.livedata.presentation.UserViewModel
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.drawShadow
 import androidx.compose.ui.platform.ContextAmbient
 import androidx.compose.ui.res.vectorResource
