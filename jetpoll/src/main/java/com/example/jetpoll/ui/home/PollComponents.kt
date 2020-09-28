@@ -116,7 +116,7 @@ private fun PreviewPollScreen() {
     PollComponent(
         poll = Poll(userName = "Gastón Saillén",userPhoto = "",
             question = "How many cups of coffee you drink each day ?",
-            listOf(Option(name = "1 cups"), Option(name = "2 cups"), Option(name = "3 cups"))
+            options = listOf(Option(name = "1 cups"), Option(name = "2 cups"), Option(name = "3 cups"))
         ), onViewPollClick = {}, onOptionClick = {}
     )
 }

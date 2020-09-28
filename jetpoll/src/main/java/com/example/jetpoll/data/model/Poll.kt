@@ -1,6 +1,7 @@
 package com.example.jetpoll.data.model
 
-data class Poll(val userName: String = "",
+data class Poll(val pollId: String = "",
+                val userName: String = "",
                 val userPhoto: String = "",
                 val question: String = "",
                 val options: List<Option> = emptyList())

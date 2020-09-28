@@ -85,7 +85,7 @@ fun CreatePollComponent(viewModel:PollViewModel){
                         val secondAnswer = answer2.value.text
                         val thirdAnswer = answer3.value.text
                         if(question.isNotEmpty() && firstAnswer.isNotEmpty() && secondAnswer.isNotEmpty() && thirdAnswer.isNotEmpty()){
-                            viewModel.setPoll(Poll("gastsail", "", question, listOf(Option(name = firstAnswer), Option(name = secondAnswer), Option(name = thirdAnswer))))
+                            viewModel.setPoll(Poll("gastsail", "", question, options = listOf(Option(name = firstAnswer), Option(name = secondAnswer), Option(name = thirdAnswer))))
                         }else{
                             showMessage(context,"Some of the fields are empty")
                         }
