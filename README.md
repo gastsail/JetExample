@@ -26,6 +26,10 @@ The project uses
 
 ![poll](https://i.imgur.com/xpUyuie.jpg)
 
+## Login details
+- Username : jetpoll
+- Password: test123
+
 # Contribute
 If you want to contribute with more examples, feel free to make a PR
 
