@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.setContent
 import androidx.compose.ui.unit.dp
@@ -25,6 +26,7 @@ import com.example.jetexample.material.bottomnav.BottomNavWithoutLabelsDemo
 import com.example.jetexample.material.checkbox.CheckBoxDemo
 import com.example.jetexample.material.divider.DividerDemo
 import com.example.jetexample.material.drawerlayout.ModalDrawerDemo
+import com.example.jetexample.material.modalbottomsheet.ModalBottomSheetLayoutDemo
 import com.example.jetexample.material.slider.SliderDemo
 import com.example.jetexample.material.snackbar.SnackbarDemo
 import com.example.jetexample.material.switch.SwitchDemo
@@ -55,12 +57,14 @@ class MainActivity : AppCompatActivity() {
 
     private val userViewModel by viewModels<UserViewModel> { UserViewModelFactory(RepoImpl(UserDataSource())) }
 
+    @ExperimentalMaterialApi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             // [EN] Call here what you want to try out
             // [ES] Llama aqui que es lo que quieres probar
             // Example: Toolbar()
+            ModalBottomSheetLayoutDemo()
         }
     }
 }

@@ -1,7 +1,10 @@
 package com.example.jetexample.state.livedata.ui
 
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.Text
+import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.ui.graphics.*
-import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumnFor
 import androidx.compose.foundation.shape.CircleShape
@@ -89,7 +92,7 @@ fun UserScreen(userViewModel:UserViewModel){
 
 @Composable
 private fun ShowProgressDialog(){
-    Box(modifier = Modifier.fillMaxSize(),gravity = Alignment.Center){
+    Box(modifier = Modifier.fillMaxSize(),alignment = Alignment.Center){
         CircularProgressIndicator()
         Text(text = "Loading...",modifier = Modifier.padding(top = 8.dp))
     }
@@ -97,7 +100,7 @@ private fun ShowProgressDialog(){
 
 @Composable
 private fun ShowEmptyList(){
-    Box(modifier = Modifier.fillMaxSize(),gravity = Alignment.Center){
+    Box(modifier = Modifier.fillMaxSize(),alignment = Alignment.Center){
         Image(asset = vectorResource(id = R.drawable.ic_baseline_error_outline_24))
         Text(text = "There is no data",modifier = Modifier.padding(top = 8.dp))
     }
