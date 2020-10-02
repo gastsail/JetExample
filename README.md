@@ -14,7 +14,7 @@ This is a repository that shows how to create different portions of UI by exampl
 In order to run each example, just call the Composable function inside setContent in the MainActivity, this will let you compile and see the example on screen
 
 # Projects
-## JetPoll (WIP)
+## JetPoll (WIP) 👷
 JetPoll is an interactive poll app made with Firebase and Jetpack Compose , Create, share and vote up polls.
 
 The project uses
