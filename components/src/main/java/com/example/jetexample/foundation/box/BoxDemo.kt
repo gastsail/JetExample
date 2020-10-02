@@ -1,7 +1,8 @@
 package com.example.jetexample.foundation.box
 
-import androidx.compose.foundation.Box
+
 import androidx.compose.foundation.Text
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.CircularProgressIndicator
@@ -27,7 +28,7 @@ import androidx.ui.tooling.preview.Preview
 
 @Composable
 fun BoxDemo(){
-    Box(modifier = Modifier.fillMaxSize(),gravity = Alignment.Center){
+    Box(modifier = Modifier.fillMaxSize(),alignment = Alignment.Center){
         CircularProgressIndicator()
         Text(text = "Will this ever finish ?",modifier = Modifier.padding(top = 8.dp))
     }
