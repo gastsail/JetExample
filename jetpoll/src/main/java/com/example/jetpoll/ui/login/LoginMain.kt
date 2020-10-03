@@ -25,8 +25,8 @@ import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
 import androidx.ui.tooling.preview.Preview
 import com.example.jetpoll.MainActivity
-import com.example.jetpoll.data.model.LoginCredentials
-import com.example.jetpoll.presentation.LoginViewModel
+import com.example.jetpoll.data.model.AuthCredentials
+import com.example.jetpoll.presentation.AuthViewModel
 import com.example.jetpoll.ui.typography
 import com.example.jetpoll.utils.ShowProgress
 import com.example.jetpoll.utils.showMessage
@@ -34,7 +34,7 @@ import com.example.jetpoll.vo.Result
 
 
 @Composable
-fun LoginMain(viewModel: LoginViewModel){
+fun LoginMain(viewModel: AuthViewModel){
     val context = ContextAmbient.current
     val loginResult: Result<Boolean> by viewModel.getLoginResult.observeAsState(Result.Success(false))
     when(loginResult){
@@ -59,7 +59,7 @@ fun LoginMain(viewModel: LoginViewModel){
 }
 
 @Composable
-private fun LoginScreen(viewModel: LoginViewModel){
+private fun LoginScreen(viewModel: AuthViewModel){
     val username = remember { mutableStateOf(TextFieldValue("")) }
     val password = remember { mutableStateOf(TextFieldValue("")) }
     Column(modifier = Modifier.fillMaxWidth().padding(16.dp)){
@@ -100,7 +100,7 @@ private fun LoginScreen(viewModel: LoginViewModel){
                         })
                     Button(modifier = Modifier.padding(bottom = 8.dp, top = 8.dp), onClick = {
                         viewModel.setLoginCredentials(
-                            LoginCredentials(
+                            AuthCredentials(
                                 username = username.value.text,
                                 password = password.value.text
                             )
@@ -120,5 +120,6 @@ private fun LoginScreen(viewModel: LoginViewModel){
 @Preview(showBackground = true)
 @Composable
 private fun PreviewLoginScreen(){
-    //LoginScreen()
+   //TODO mock viewmodel to render preview
+   //LoginScreen()
 }

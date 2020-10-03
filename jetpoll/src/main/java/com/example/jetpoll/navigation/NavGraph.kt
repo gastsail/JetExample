@@ -11,12 +11,22 @@ sealed class Destination : Parcelable {
 
     @Parcelize
     object CreatePoll : Destination()
+
+    @Parcelize
+    object Register: Destination()
+
+    @Parcelize
+    object Login: Destination()
 }
 
 class Actions(navigator: Navigator<Destination>) {
 
     val createPoll: () -> Unit = {
         navigator.navigate(Destination.CreatePoll)
+    }
+
+    val register:() -> Unit = {
+        navigator.navigate(Destination.Register)
     }
 
     val pressOnBack: () -> Unit = {
