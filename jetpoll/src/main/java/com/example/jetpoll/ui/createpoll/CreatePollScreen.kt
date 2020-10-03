@@ -26,7 +26,7 @@ import com.example.jetpoll.utils.showMessage
 import com.example.jetpoll.vo.Result
 
 @Composable
-fun CreatePollScreen(viewModel:PollViewModel){
+fun CreatePollMain(viewModel:PollViewModel){
     val pollResult: Result<Boolean> by viewModel.createPoll.observeAsState(Result.Success(false))
     val context = ContextAmbient.current
 
@@ -38,7 +38,7 @@ fun CreatePollScreen(viewModel:PollViewModel){
             if ((pollResult as Result.Success<Boolean>).data) {
                 showMessage(context, "Poll created :)")
             } else {
-                CreatePollComponent(viewModel)
+                CreatePollScreen(viewModel)
             }
 
         }
@@ -49,7 +49,7 @@ fun CreatePollScreen(viewModel:PollViewModel){
 }
 
 @Composable
-fun CreatePollComponent(viewModel:PollViewModel){
+private fun CreatePollScreen(viewModel:PollViewModel){
     val context = ContextAmbient.current
     val text = remember { mutableStateOf(TextFieldValue("")) }
     val answer1 = remember { mutableStateOf(TextFieldValue("")) }

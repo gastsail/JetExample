@@ -45,7 +45,6 @@ fun RegisterMain(viewModel:AuthViewModel){
                 context.startActivity(intent)
             } else {
                 RegisterScreen(viewModel)
-                showMessage(context, "Invalid credentials.")
             }
         }
         is Result.Failure -> {

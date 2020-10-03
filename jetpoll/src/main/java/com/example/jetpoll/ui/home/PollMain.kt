@@ -11,7 +11,7 @@ import com.example.jetpoll.navigation.BackDispatcherAmbient
 import com.example.jetpoll.navigation.Destination
 import com.example.jetpoll.navigation.Navigator
 import com.example.jetpoll.presentation.PollViewModel
-import com.example.jetpoll.ui.createpoll.CreatePollScreen
+import com.example.jetpoll.ui.createpoll.CreatePollMain
 import com.example.jetpoll.utils.ProvideDisplayInsets
 
 @Composable
@@ -31,7 +31,7 @@ fun PollMain(viewModel: PollViewModel, backDispatcher: OnBackPressedDispatcher) 
                         PollHome(viewModel = viewModel,onCreatePollClick = actions.createPoll)
                     }
                     is Destination.CreatePoll -> {
-                        CreatePollScreen(viewModel)
+                        CreatePollMain(viewModel)
                     }
                 }
             }

@@ -1,6 +1,8 @@
 package com.example.jetpoll.ui.login
 
 import android.content.Intent
+import androidx.activity.OnBackPressedDispatcher
+import androidx.compose.animation.Crossfade
 import androidx.compose.foundation.Icon
 import androidx.compose.foundation.Text
 import androidx.compose.foundation.layout.Column
@@ -12,11 +14,9 @@ import androidx.compose.material.TextField
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material.icons.filled.Person
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
+import androidx.compose.runtime.*
 import androidx.compose.runtime.livedata.observeAsState
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.savedinstancestate.rememberSavedInstanceState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.ContextAmbient
@@ -26,15 +26,47 @@ import androidx.compose.ui.unit.dp
 import androidx.ui.tooling.preview.Preview
 import com.example.jetpoll.MainActivity
 import com.example.jetpoll.data.model.AuthCredentials
+import com.example.jetpoll.navigation.Actions
+import com.example.jetpoll.navigation.BackDispatcherAmbient
+import com.example.jetpoll.navigation.Destination
+import com.example.jetpoll.navigation.Navigator
 import com.example.jetpoll.presentation.AuthViewModel
+import com.example.jetpoll.ui.createpoll.CreatePollMain
+import com.example.jetpoll.ui.register.RegisterMain
 import com.example.jetpoll.ui.typography
+import com.example.jetpoll.utils.ProvideDisplayInsets
 import com.example.jetpoll.utils.ShowProgress
 import com.example.jetpoll.utils.showMessage
 import com.example.jetpoll.vo.Result
 
 
 @Composable
-fun LoginMain(viewModel: AuthViewModel){
+fun LoginMain(viewModel: AuthViewModel,backDispatcher:OnBackPressedDispatcher){
+    val navigator: Navigator<Destination> = rememberSavedInstanceState(
+            saver = Navigator.saver(backDispatcher)
+    ) {
+        Navigator(Destination.Login, backDispatcher)
+    }
+    val actions = remember(navigator) { Actions(navigator) }
+
+    Providers(BackDispatcherAmbient provides backDispatcher) {
+        ProvideDisplayInsets {
+            Crossfade(navigator.current) { destination ->
+                when (destination) {
+                    is Destination.Login -> {
+                        LoginHome(viewModel = viewModel,onRegisterClick = actions.register)
+                    }
+                    is Destination.Register -> {
+                        RegisterMain(viewModel = viewModel)
+                    }
+                }
+            }
+        }
+    }
+}
+
+@Composable
+private fun LoginHome(viewModel: AuthViewModel,onRegisterClick:() -> Unit){
     val context = ContextAmbient.current
     val loginResult: Result<Boolean> by viewModel.getLoginResult.observeAsState(Result.Success(false))
     when(loginResult){
@@ -47,19 +79,18 @@ fun LoginMain(viewModel: AuthViewModel){
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
                 context.startActivity(intent)
             } else {
-                LoginScreen(viewModel)
-                showMessage(context, "Invalid credentials.")
+                LoginScreen(viewModel,onRegisterClick)
             }
         }
         is Result.Failure -> {
-            LoginScreen(viewModel = viewModel)
+            LoginScreen(viewModel = viewModel,onRegisterClick)
             showMessage(context, (loginResult as Result.Failure<Boolean>).exception.message!!)
         }
     }
 }
 
 @Composable
-private fun LoginScreen(viewModel: AuthViewModel){
+private fun LoginScreen(viewModel: AuthViewModel,onRegisterClick: () -> Unit){
     val username = remember { mutableStateOf(TextFieldValue("")) }
     val password = remember { mutableStateOf(TextFieldValue("")) }
     Column(modifier = Modifier.fillMaxWidth().padding(16.dp)){
@@ -108,7 +139,7 @@ private fun LoginScreen(viewModel: AuthViewModel){
                     }) {
                         Text("Login")
                     }
-                    Button(onClick = {}) {
+                    Button(onClick = onRegisterClick) {
                         Text("Register")
                     }
                 }
