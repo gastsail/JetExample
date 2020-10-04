@@ -10,6 +10,8 @@ import androidx.compose.material.Button
 import androidx.compose.material.Card
 import androidx.compose.material.OutlinedButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -31,9 +33,11 @@ import dev.chrisbanes.accompanist.coil.CoilImage
 
 @Composable
 fun PollComponent(
-    poll: Poll,
-    onOptionClick: (Option) -> Unit,
-    onViewPollClick: (Poll) -> Unit) {
+        poll: Poll,
+        onOptionClick: (Option) -> Unit,
+        onVotePollClick: (Poll) -> Unit) {
+
+    val voteState = remember { mutableStateOf(false)}
 
     Card(modifier = Modifier.width(300.dp).padding(16.dp), elevation = 8.dp, shape = RoundedCornerShape(8.dp)) {
         Column(modifier = Modifier.padding(8.dp)) {
@@ -43,20 +47,26 @@ fun PollComponent(
             }
             Spacer(modifier = Modifier.padding(top = 8.dp))
             for (option in poll.options) {
-                OutlinedButton(modifier = Modifier.fillMaxWidth().padding(top = 4.dp, end = 8.dp, start = 8.dp), onClick = { onOptionClick(option) }) {
+                OutlinedButton(modifier = Modifier.fillMaxWidth().padding(top = 4.dp, end = 8.dp, start = 8.dp), onClick = {
+                    voteState.value = true
+                    onOptionClick(option)
+                }) {
                     Text(text = option.name, maxLines = 1)
                 }
             }
 
             Spacer(modifier = Modifier.padding(top = 16.dp))
 
-            Button(onClick = {
-                onViewPollClick(poll)
-            }, modifier = Modifier.width(200.dp).align(Alignment.CenterHorizontally).clip(
-                CircleShape
-            )) {
-                Text(text = "View poll")
+            if(voteState.value){
+                Button(onClick = {
+                    onVotePollClick(poll)
+                }, modifier = Modifier.width(200.dp).align(Alignment.CenterHorizontally).clip(
+                        CircleShape
+                )) {
+                    Text(text = "Vote")
+                }
             }
+
             Spacer(modifier = Modifier.padding(bottom = 8.dp))
         }
     }
@@ -99,7 +109,7 @@ fun PollListComponent(modifier: Modifier = Modifier, pollList: List<Poll>) {
             PollComponent(poll = poll,
                 onOptionClick = { option ->
                     showMessage(context, "Voted for $option")
-                }, onViewPollClick = {
+                }, onVotePollClick = {
                     showMessage(context, "Clicked to view poll results")
                 })
         }
@@ -114,7 +124,7 @@ private fun PreviewPollScreen() {
         poll = Poll(userName = "Gastón Saillén",userPhoto = "",
             question = "How many cups of coffee you drink each day ?",
             options = listOf(Option(name = "1 cups"), Option(name = "2 cups"), Option(name = "3 cups"))
-        ), onViewPollClick = {}, onOptionClick = {}
+        ), onVotePollClick = {}, onOptionClick = {}
     )
 }
 
