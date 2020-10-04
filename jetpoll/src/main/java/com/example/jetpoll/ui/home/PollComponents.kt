@@ -57,15 +57,13 @@ fun PollComponent(
 
             Spacer(modifier = Modifier.padding(top = 16.dp))
 
-            if(voteState.value){
-                Button(onClick = {
+            Button(onClick = {
                     onVotePollClick(poll)
                 }, modifier = Modifier.width(200.dp).align(Alignment.CenterHorizontally).clip(
                         CircleShape
-                )) {
+                ),enabled = voteState.value) {
                     Text(text = "Vote")
                 }
-            }
 
             Spacer(modifier = Modifier.padding(bottom = 8.dp))
         }
