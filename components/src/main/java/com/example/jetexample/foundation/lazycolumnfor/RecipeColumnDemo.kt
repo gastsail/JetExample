@@ -2,24 +2,21 @@ package com.example.jetexample.foundation.lazycolumnfor
 
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.ScrollableColumn
-import androidx.compose.foundation.Text
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyColumnFor
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
-import androidx.compose.material.Surface
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.ContextAmbient
-import androidx.compose.ui.res.imageResource
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.ui.tooling.preview.Preview
 import com.example.jetexample.ui.typography
 import com.example.jetexample.R
-import com.example.jetexample.utils.showMessage
 
 /**
  * [EN]
@@ -53,12 +50,12 @@ val recipeList = listOf(Recipe(R.drawable.header,"Arrozmate", listOf("Arroz","To
 // [ES] Definimos cada fila del recyclerview
 @Composable
 private fun RecipeCard(recipe: Recipe){
-    val image = imageResource(R.drawable.header)
+    val image = painterResource(R.drawable.header)
     Card(shape = RoundedCornerShape(8.dp),elevation = 8.dp,modifier = Modifier.padding(8.dp)) {
         Column(modifier = Modifier.padding(16.dp)) {
-            val imageModifier = Modifier.preferredHeight(150.dp).fillMaxWidth().clip(shape = RoundedCornerShape(8.dp))
-            Image(asset = image,modifier = imageModifier,contentScale = ContentScale.Crop)
-            Spacer(modifier = Modifier.preferredHeight(16.dp))
+            val imageModifier = Modifier.requiredHeight(150.dp).fillMaxWidth().clip(shape = RoundedCornerShape(8.dp))
+            Image(painter = image,modifier = imageModifier,contentScale = ContentScale.Crop, contentDescription = "header")
+            Spacer(modifier = Modifier.requiredHeight(16.dp))
             Text(text = recipe.title,style = typography.h6)
             for(ingredient in recipe.ingredients){
                 Text(text = "* $ingredient",style = typography.body2)
@@ -71,8 +68,10 @@ private fun RecipeCard(recipe: Recipe){
 // [ES] Creamos una lista de recetas con LazyColumnFor (mismo comportamiento que RecyclerView)
 @Composable
 fun RecipeColumnListDemo(recipeList:List<Recipe>){
-    LazyColumnFor(items = recipeList) { item ->
-       RecipeCard(recipe = item)
+    LazyColumn {
+       items(recipeList) { recipe ->
+           RecipeCard(recipe)
+       }
     }
 }
 

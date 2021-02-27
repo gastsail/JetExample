@@ -4,8 +4,8 @@ import androidx.compose.material.Switch
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.ui.platform.ContextAmbient
-import androidx.ui.tooling.preview.Preview
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.tooling.preview.Preview
 import com.example.jetexample.utils.showMessage
 
 /**
@@ -20,7 +20,7 @@ import com.example.jetexample.utils.showMessage
 
 @Composable
 fun SwitchDemo() {
-        val context = ContextAmbient.current
+        val context = LocalContext.current
         val checkedState = remember { mutableStateOf(false) }
         Switch(
             checked = checkedState.value,

@@ -1,13 +1,9 @@
 package com.example.jetexample.material.drawerlayout
 
-import androidx.compose.foundation.Text
 import androidx.compose.foundation.layout.Column
-import androidx.compose.material.Button
-import androidx.compose.material.DrawerValue
-import androidx.compose.material.ModalDrawerLayout
-import androidx.compose.material.rememberDrawerState
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
-import androidx.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.Preview
 
 /**
  * [EN]
@@ -29,7 +25,7 @@ import androidx.ui.tooling.preview.Preview
 @Composable
 fun ModalDrawerDemo() {
     val drawerState = rememberDrawerState(DrawerValue.Closed)
-    ModalDrawerLayout(
+    ModalDrawer(
             drawerState = drawerState,
             drawerContent = {
                 Column {
@@ -38,7 +34,7 @@ fun ModalDrawerDemo() {
                     }
                 }
             },
-            bodyContent = {
+            content = {
                 Column {
                     Button(onClick = { drawerState.open() }) {
                         Text("Open drawer")

@@ -1,17 +1,17 @@
 package com.example.jetexample.material.snackbar
 
-import androidx.compose.foundation.Text
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Button
 import androidx.compose.material.Snackbar
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.ContextAmbient
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.ui.tooling.preview.Preview
 import com.example.jetexample.utils.showMessage
 
 /**
@@ -26,7 +26,7 @@ import com.example.jetexample.utils.showMessage
 
 @Composable
 fun SnackbarDemo() {
-    val context = ContextAmbient.current
+    val context = LocalContext.current
     Column {
         val snackbarVisibleState = remember { mutableStateOf(false) }
 
@@ -39,7 +39,7 @@ fun SnackbarDemo() {
         }
         if (snackbarVisibleState.value) {
             Snackbar(
-                    text = { Text(text = "This is a snackbar!") },
+                    content = { Text(text = "This is a snackbar!") },
                     action = {
                         Button(onClick = {
                             showMessage(context,"Action click")

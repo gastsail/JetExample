@@ -1,6 +1,7 @@
 package com.example.jetexample
 
 import android.os.Bundle
+import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.layout.Column
@@ -8,15 +9,12 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.setContent
 import androidx.compose.ui.unit.dp
 import com.example.jetexample.foundation.box.BoxDemo
 import com.example.jetexample.foundation.clickabletext.ClickableTextDemo
 import com.example.jetexample.foundation.lazycolumnfor.RecipeColumnListDemo
 import com.example.jetexample.foundation.lazycolumnfor.recipeList
 import com.example.jetexample.foundation.lazyrowfor.RecipeRowListDemo
-import com.example.jetexample.foundation.scrollablecolumn.ScrollableColumnDemo
-import com.example.jetexample.foundation.scrollablerow.ScrollableRowDemo
 import com.example.jetexample.foundation.textfield.TextFieldDemo
 import com.example.jetexample.material.alertdialog.AlertDialogDemo
 import com.example.jetexample.material.bottomappbar.BottomBarNoFabDemo

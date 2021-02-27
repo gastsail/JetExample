@@ -1,7 +1,5 @@
 package com.example.jetexample.material.bottomappbar
 
-import androidx.compose.foundation.Icon
-import androidx.compose.foundation.Text
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.*
@@ -12,9 +10,8 @@ import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.ContextAmbient
-import androidx.ui.tooling.preview.Preview
-import com.example.jetexample.material.toolbar.ToolbarDemo
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.tooling.preview.Preview
 import com.example.jetexample.utils.showMessage
 
 /**
@@ -33,14 +30,14 @@ import com.example.jetexample.utils.showMessage
 
 @Composable
 fun BottomBarNoFabDemo(){
-    val context = ContextAmbient.current
+    val context = LocalContext.current
 
     Scaffold(bottomBar = {
         BottomAppBar {
             IconButton(onClick = {
                 showMessage(context, "Drawer action click")
             }) {
-                Icon(Icons.Filled.Menu)
+                Icon(imageVector = Icons.Filled.Menu, contentDescription = "Menu icon")
             }
             // [EN] The actions should be at the end of the BottomAppBar
             // [ES] Alineamos las acciones al final del bottom bar
@@ -48,12 +45,12 @@ fun BottomBarNoFabDemo(){
             IconButton(onClick = {
                 showMessage(context, "Favorite action clicked")
             }) {
-                Icon(Icons.Filled.Favorite)
+                Icon(imageVector = Icons.Filled.Favorite, contentDescription = "Favorite icon")
             }
             IconButton(onClick = {
                 showMessage(context, "Call action clicked")
             }) {
-                Icon(Icons.Filled.Call)
+                Icon(imageVector = Icons.Filled.Call, contentDescription = "Call icon")
             }
         }
     }) {
@@ -64,7 +61,7 @@ fun BottomBarNoFabDemo(){
 
 @Composable
 fun BottomBarWithFabDemo(){
-    val context = ContextAmbient.current
+    val context = LocalContext.current
 
     Scaffold(topBar = { },
             bottomBar = {
@@ -72,18 +69,18 @@ fun BottomBarWithFabDemo(){
                     IconButton(onClick = {
                         showMessage(context,"Drawer item clicked")
                     }) {
-                        Icon(Icons.Filled.Menu)
+                        Icon(imageVector = Icons.Filled.Menu, contentDescription = "Menu icon")
                     }
                     Spacer(Modifier.weight(1f, true))
                     IconButton(onClick = {
                         showMessage(context,"Favorite action clicked")
                     }) {
-                        Icon(Icons.Filled.Favorite)
+                        Icon(imageVector = Icons.Filled.Favorite, contentDescription = "Favorite icon")
                     }
                     IconButton(onClick = {
                         showMessage(context,"Call action clicked")
                     }) {
-                        Icon(Icons.Filled.Call)
+                        Icon(imageVector = Icons.Filled.Call, contentDescription = "Call icon")
                     }
                 }
             },
@@ -96,7 +93,7 @@ fun BottomBarWithFabDemo(){
                             showMessage(context,"Fab clicked")
                         }
                 ) {
-                    Icon(asset = Icons.Filled.Add)
+                    Icon(imageVector = Icons.Filled.Add, contentDescription = "Add icon")
                 }
             }){
         // [EN] Body content goes here

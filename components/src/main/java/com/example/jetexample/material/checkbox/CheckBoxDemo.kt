@@ -6,10 +6,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.ContextAmbient
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.core.content.ContextCompat
-import androidx.ui.tooling.preview.Preview
 import com.example.jetexample.utils.showMessage
 
 /**
@@ -24,7 +23,7 @@ import com.example.jetexample.utils.showMessage
 
 @Composable
 fun CheckBoxDemo() {
-        val context = ContextAmbient.current
+        val context = LocalContext.current
         val checkedState = remember { mutableStateOf(false) }
         Checkbox(modifier = Modifier.padding(16.dp) ,
             checked = checkedState.value,

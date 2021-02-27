@@ -1,15 +1,15 @@
 package com.example.jetexample.material.toolbar
 
-import androidx.compose.foundation.Icon
-import androidx.compose.foundation.Text
+import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
+import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.platform.ContextAmbient
-import androidx.compose.ui.res.vectorResource
-import androidx.ui.tooling.preview.Preview
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.tooling.preview.Preview
 import com.example.jetexample.R
 import com.example.jetexample.utils.showMessage
 
@@ -33,18 +33,18 @@ import com.example.jetexample.utils.showMessage
 
 @Composable
 fun ToolbarDemo() {
-    val context = ContextAmbient.current
+    val context = LocalContext.current
     TopAppBar(title = { Text(text = "JetExample") }, navigationIcon = {
         IconButton(onClick = {
             showMessage(context,"Clicked drawer icon")
         }) {
-            Icon(Icons.Filled.Menu)
+            Icon(imageVector = Icons.Filled.Menu, contentDescription = "Menu icon")
         }
     }, actions = {
         IconButton(onClick = {
             showMessage(context,"Clicked save icon")
         }) {
-            Icon(vectorResource(id = R.drawable.ic_baseline_save_24))
+            Icon(painterResource(id = R.drawable.ic_baseline_save_24), contentDescription = "Baseline save")
         }
     })
 }

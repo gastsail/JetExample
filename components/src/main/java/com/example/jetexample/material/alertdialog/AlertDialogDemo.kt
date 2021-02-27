@@ -1,14 +1,14 @@
 package com.example.jetexample.material.alertdialog
 
-import androidx.compose.foundation.Text
 import androidx.compose.material.AlertDialog
 import androidx.compose.material.Button
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.ui.platform.ContextAmbient
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.window.Dialog
-import androidx.ui.tooling.preview.Preview
 import com.example.jetexample.utils.showMessage
 
 /**
@@ -24,7 +24,7 @@ import com.example.jetexample.utils.showMessage
 @Composable
 fun AlertDialogDemo() {
     val alertState = remember { mutableStateOf(false) }
-    val context = ContextAmbient.current
+    val context = LocalContext.current
     Button(onClick = {
         alertState.value = true
     }) {

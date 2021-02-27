@@ -1,10 +1,6 @@
 package com.example.jetexample.material.bottomnav
 
-import androidx.compose.foundation.Icon
-import androidx.compose.foundation.Text
-import androidx.compose.material.BottomNavigation
-import androidx.compose.material.BottomNavigationItem
-import androidx.compose.material.Scaffold
+import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Notifications
@@ -13,9 +9,9 @@ import androidx.compose.material.icons.filled.Search
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.ui.graphics.vector.VectorAsset
-import androidx.compose.ui.platform.ContextAmbient
-import androidx.ui.tooling.preview.Preview
+import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.tooling.preview.Preview
 import com.example.jetexample.utils.showMessage
 
 /**
@@ -33,7 +29,7 @@ import com.example.jetexample.utils.showMessage
  * alguna de ellas
  */
 
-data class ListItem(val title: String, val icon: VectorAsset)
+data class ListItem(val title: String, val icon: ImageVector)
 
 private val listItems = listOf(
         ListItem("Home", Icons.Default.Home),
@@ -45,13 +41,13 @@ private val listItems = listOf(
 @Composable
 fun BottomNavWithLabelsDemo() {
     val selectedIndex = remember { mutableStateOf(0) }
-    val context = ContextAmbient.current
+    val context = LocalContext.current
     AlignToBottom {
         BottomNavigation(content = {
             listItems.forEachIndexed { index, item ->
                 BottomNavigationItem(
                         icon = {
-                            Icon(asset = item.icon)
+                            Icon(imageVector = item.icon, contentDescription = "Icon icon")
                         },
                         label = { Text(item.title) },
                         onClick = {
@@ -68,13 +64,13 @@ fun BottomNavWithLabelsDemo() {
 @Composable
 fun BottomNavWithoutLabelsDemo() {
     val selectedIndex = remember { mutableStateOf(0) }
-    val context = ContextAmbient.current
+    val context = LocalContext.current
     AlignToBottom {
         BottomNavigation(content = {
             listItems.forEachIndexed { index, item ->
                 BottomNavigationItem(
                         icon = {
-                            Icon(asset = item.icon)
+                            Icon(imageVector = item.icon, contentDescription = "Icon icon")
                         },
                         label = { Text(item.title) },
                         onClick = {
@@ -82,7 +78,7 @@ fun BottomNavWithoutLabelsDemo() {
                             showMessage(context, "${item.title} selected")
                         },
                         selected = selectedIndex.value == index,
-                        alwaysShowLabels = false
+                        alwaysShowLabel = false
                 )
             }
         })
@@ -98,7 +94,7 @@ private fun AlignToBottom(content: @Composable () -> Unit) {
             bottomBar = {
                 content()
             },
-            bodyContent = {
+            content = {
                 // [EN] Here you can write your UI for each top destination, take in mind that you need to reac to state change from the BottomNav
                 // [ES] Aquí puedes escribir la UI para cada destino, ten encuenta que deberias reaccionar a los cambios de estado del BottomNav
             })
