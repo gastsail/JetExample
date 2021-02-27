@@ -4,19 +4,23 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.jetexample.ui.typography
+import kotlinx.coroutines.launch
+import kotlin.coroutines.CoroutineContext
 
 @ExperimentalMaterialApi
 @Composable
 fun ModalBottomSheetLayoutDemo() {
     val modalState = rememberModalBottomSheetState(ModalBottomSheetValue.Hidden)
+    val coroutineScope = rememberCoroutineScope()
 
-    Button(modifier = Modifier.padding(16.dp), onClick = { modalState.show() }) {
+    Button(modifier = Modifier.padding(16.dp), onClick = { coroutineScope.launch { modalState.show() } }) {
         Text("Show Bottom Sheet")
     }
 
@@ -33,10 +37,10 @@ fun ModalBottomSheetLayoutDemo() {
             style = typography.body1
         )
         Row(modifier = Modifier.align(Alignment.CenterHorizontally).padding(8.dp)) {
-            Button(modifier = Modifier.padding(end = 8.dp), onClick = { modalState.hide() }) {
+            Button(modifier = Modifier.padding(end = 8.dp), onClick = { coroutineScope.launch { modalState.hide() } }) {
                 Text("Cancel")
             }
-            Button(onClick = { modalState.hide() }) {
+            Button(onClick = { coroutineScope.launch { modalState.hide() } }) {
                 Text("Ok")
             }
         }

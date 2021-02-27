@@ -3,7 +3,9 @@ package com.example.jetexample.material.drawerlayout
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.tooling.preview.Preview
+import kotlinx.coroutines.launch
 
 /**
  * [EN]
@@ -25,18 +27,20 @@ import androidx.compose.ui.tooling.preview.Preview
 @Composable
 fun ModalDrawerDemo() {
     val drawerState = rememberDrawerState(DrawerValue.Closed)
+    val coroutineScope = rememberCoroutineScope()
+
     ModalDrawer(
             drawerState = drawerState,
             drawerContent = {
                 Column {
-                    Button(onClick = { drawerState.close() }) {
+                    Button(onClick = { coroutineScope.launch { drawerState.close() } }) {
                         Text("Close drawer")
                     }
                 }
             },
             content = {
                 Column {
-                    Button(onClick = { drawerState.open() }) {
+                    Button(onClick = { coroutineScope.launch { drawerState.open() } }) {
                         Text("Open drawer")
                     }
                 }

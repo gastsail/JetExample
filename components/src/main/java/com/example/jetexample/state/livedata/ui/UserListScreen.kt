@@ -55,7 +55,8 @@ private fun UserRow(user: User, onUserClick: (User) -> Unit) {
         CoilImage(
             data = user.profilePicutre,
             modifier = imageModifier,
-            contentScale = ContentScale.Crop
+            contentScale = ContentScale.Crop,
+            contentDescription = "Profile picture"
         )
         Column(modifier = Modifier.padding(start = 8.dp).align(Alignment.CenterVertically)) {
             Text(
@@ -79,9 +80,8 @@ private fun UserList(userList: List<User>) {
             UserRow(user = user, onUserClick = {
                 showMessage(context, "You clicked ${user.name}")
             })
+            Divider()
         }
-
-        Divider()
     }
 }
 
