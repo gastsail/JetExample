@@ -1,22 +1,20 @@
 package com.example.jetpoll.ui.createpoll
 
-import androidx.compose.foundation.Text
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.Button
 import androidx.compose.material.Card
+import androidx.compose.material.Text
 import androidx.compose.material.TextField
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.ContextAmbient
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.input.TextFieldValue
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.ui.tooling.preview.Preview
 import com.example.jetpoll.data.model.Option
 import com.example.jetpoll.data.model.Poll
 import com.example.jetpoll.presentation.PollViewModel
@@ -28,7 +26,7 @@ import com.example.jetpoll.vo.Result
 @Composable
 fun CreatePollMain(viewModel:PollViewModel){
     val pollResult: Result<Boolean> by viewModel.createPoll.observeAsState(Result.Success(false))
-    val context = ContextAmbient.current
+    val context = LocalContext.current
 
     when (pollResult) {
         is Result.Loading -> {
@@ -50,7 +48,7 @@ fun CreatePollMain(viewModel:PollViewModel){
 
 @Composable
 private fun CreatePollScreen(viewModel:PollViewModel){
-    val context = ContextAmbient.current
+    val context = LocalContext.current
     val text = remember { mutableStateOf(TextFieldValue("")) }
     val answer1 = remember { mutableStateOf(TextFieldValue("")) }
     val answer2 = remember { mutableStateOf(TextFieldValue("")) }
@@ -77,7 +75,7 @@ private fun CreatePollScreen(viewModel:PollViewModel){
                     onValueChange = { answer3.value = it },
                     label = { Text("Answer 3") })
 
-            Button(modifier = Modifier.preferredSize(120.dp, 50.dp).padding(bottom = 8.dp).align(Alignment.CenterHorizontally),
+            Button(modifier = Modifier.requiredSize(120.dp, 50.dp).padding(bottom = 8.dp).align(Alignment.CenterHorizontally),
                     shape = CircleShape,
                     onClick = {
                         val question = text.value.text

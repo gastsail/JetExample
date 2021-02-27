@@ -1,29 +1,23 @@
 package com.example.jetpoll.ui.register
 
 import android.content.Intent
-import androidx.compose.foundation.Icon
-import androidx.compose.foundation.Text
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.Button
-import androidx.compose.material.Card
-import androidx.compose.material.TextField
+import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.ContextAmbient
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.TextFieldValue
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.ui.tooling.preview.Preview
 import com.example.jetpoll.MainActivity
 import com.example.jetpoll.data.model.AuthCredentials
 import com.example.jetpoll.presentation.AuthViewModel
@@ -34,7 +28,7 @@ import com.example.jetpoll.vo.Result
 
 @Composable
 fun RegisterMain(viewModel:AuthViewModel){
-    val context = ContextAmbient.current
+    val context = LocalContext.current
     val registerResult: Result<Boolean> by viewModel.getRegisterResult.observeAsState(Result.Success(false))
     when(registerResult){
         is Result.Loading -> ShowProgress()
@@ -56,7 +50,7 @@ fun RegisterMain(viewModel:AuthViewModel){
 
 @Composable
 private fun RegisterScreen(viewModel: AuthViewModel){
-    val context = ContextAmbient.current
+    val context = LocalContext.current
     val username = remember { mutableStateOf(TextFieldValue("")) }
     val password = remember { mutableStateOf(TextFieldValue("")) }
     val verifpassword = remember { mutableStateOf(TextFieldValue("")) }
@@ -75,7 +69,7 @@ private fun RegisterScreen(viewModel: AuthViewModel){
                         modifier = Modifier.fillMaxWidth().padding(8.dp),
                         horizontalAlignment = Alignment.CenterHorizontally
                 ) {
-                    TextField(leadingIcon = { Icon(Icons.Filled.Person) },
+                    TextField(leadingIcon = { Icon(imageVector = Icons.Filled.Person, contentDescription = "Person icon") },
                             modifier = Modifier.fillMaxWidth().padding(
                                     bottom = 8.dp
                             ),
@@ -87,7 +81,7 @@ private fun RegisterScreen(viewModel: AuthViewModel){
                                 )
                             })
                     TextField(
-                            leadingIcon = { Icon(Icons.Filled.Lock) },
+                            leadingIcon = { Icon(imageVector = Icons.Filled.Lock, contentDescription = "Lock icon") },
                             modifier = Modifier.fillMaxWidth().padding(bottom = 8.dp),
                             value = password.value,
                             onValueChange = { password.value = it },
@@ -98,7 +92,7 @@ private fun RegisterScreen(viewModel: AuthViewModel){
                             })
 
                     TextField(
-                            leadingIcon = { Icon(Icons.Filled.Lock) },
+                            leadingIcon = { Icon(imageVector = Icons.Filled.Lock, contentDescription = "Lock icon") },
                             modifier = Modifier.fillMaxWidth(),
                             value = verifpassword.value,
                             onValueChange = { verifpassword.value = it },

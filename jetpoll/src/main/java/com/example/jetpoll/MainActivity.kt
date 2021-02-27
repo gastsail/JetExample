@@ -2,9 +2,9 @@ package com.example.jetpoll
 
 import android.content.Intent
 import android.os.Bundle
+import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.compose.ui.platform.setContent
 import com.example.jetpoll.data.DataSource
 import com.example.jetpoll.domain.RepoImpl
 import com.example.jetpoll.ui.home.PollMain
