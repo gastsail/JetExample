@@ -1,6 +1,6 @@
 # JetExample
 
-![Compose](https://img.shields.io/badge/Compose-1.0.0--alpha04-brightgreen)
+![Compose](https://img.shields.io/badge/Compose-1.0.0--beta01-brightgreen)
 [![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://lbesson.mit-license.org/)
 
 ![image](https://miro.medium.com/max/7086/1*CteVW3NQ6RR4mQ2bsL9SGQ.png)
