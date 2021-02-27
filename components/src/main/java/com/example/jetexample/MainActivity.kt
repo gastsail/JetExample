@@ -53,6 +53,8 @@ import com.example.jetexample.state.livedata.ui.UserScreen
 
 class MainActivity : AppCompatActivity() {
 
+    // [EN] Viewmodel to provide to UserScreen demo
+    // [ES] Viewmodel para proveer a UserScreen demo
     private val userViewModel by viewModels<UserViewModel> { UserViewModelFactory(RepoImpl(UserDataSource())) }
 
     @ExperimentalMaterialApi
