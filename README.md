@@ -15,6 +15,7 @@ In order to run each example, just call the Composable function inside setConten
 # Projects
 ## JetPoll (WIP) 👷
 JetPoll is an interactive poll app made with Firebase and Jetpack Compose , Create, share and vote up polls.
+In order to run JetPoll, remember to create a firebase project and add google-services.json to the jetpoll module
 
 The project uses
 - MVVM 
