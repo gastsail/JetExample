@@ -1,6 +1,5 @@
 package com.example.jetexample.foundation.lazycolumnfor
 
-import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -17,6 +16,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.jetexample.ui.typography
 import com.example.jetexample.R
+import com.example.jetexample.data.model.Recipe
+import com.example.jetexample.state.livedata.data.MainDataSource
 
 /**
  * [EN]
@@ -28,22 +29,7 @@ import com.example.jetexample.R
  * En este ejemplo mostramos como crear un [RecyclerView] de recetas utilizando [LazyColumnFor]
  */
 
-// [EN] We define a data class that will hold the data of each row
-// [ES] Definimos un data class que contiene los elementos de la receta
-data class Recipe(
-        @DrawableRes val imageResource: Int,
-        val title: String,
-        val ingredients: List<String>
-)
-
-// [EN] Creating the dummy list
-// [ES] Creamos una lista de prueba
-val recipeList = listOf(Recipe(R.drawable.header,"Arrozmate", listOf("Arroz","Tomate","Crema")),
-        Recipe(R.drawable.header,"Calabaza", listOf("Queso","Azucar","Agua")),
-        Recipe(R.drawable.header,"Torta", listOf("Merengue","Chocolate","Vainilla")),
-        Recipe(R.drawable.header,"Torta2", listOf("Merengue2","Chocolate2","Vainilla2")),
-        Recipe(R.drawable.header,"TestText", listOf("Merengue2","Chocolate2","Vainilla2")),
-        Recipe(R.drawable.header,"Android", listOf("Merengue2","Chocolate2","Vainilla2")))
+private val dataSource = MainDataSource()
 
 
 // [EN] We define each row of the recyclerview
@@ -80,5 +66,5 @@ fun RecipeColumnListDemo(recipeList:List<Recipe>){
 @Preview(showBackground = true)
 @Composable
 private fun RecipePreview(){
-    RecipeCard(recipeList[0])
+    RecipeCard(dataSource.dummyRecipeList[0])
 }

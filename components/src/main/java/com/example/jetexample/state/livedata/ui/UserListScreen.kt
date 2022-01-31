@@ -17,17 +17,17 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.example.jetexample.R
-import com.example.jetexample.state.livedata.data.model.User
-import com.example.jetexample.state.livedata.presentation.UserViewModel
+import com.example.jetexample.data.model.User
+import com.example.jetexample.state.livedata.presentation.MainViewModel
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
+import coil.compose.rememberImagePainter
 import com.example.jetexample.utils.Result
 import com.example.jetexample.utils.showMessage
-import dev.chrisbanes.accompanist.coil.CoilImage
 
 /**
  * [EN]
@@ -47,18 +47,25 @@ import dev.chrisbanes.accompanist.coil.CoilImage
 @Composable
 private fun UserRow(user: User, onUserClick: (User) -> Unit) {
     Row(
-        modifier = Modifier.clickable(onClick = { onUserClick(user) }).fillMaxWidth().padding(8.dp)
+        modifier = Modifier
+            .clickable(onClick = { onUserClick(user) })
+            .fillMaxWidth()
+            .padding(8.dp)
     ) {
         val imageModifier =
-            Modifier.requiredSize(46.dp).shadow(elevation = 4.dp, shape = CircleShape)
+            Modifier
+                .requiredSize(46.dp)
+                .shadow(elevation = 4.dp, shape = CircleShape)
                 .background(color = Color.White, shape = CircleShape)
-        CoilImage(
-            data = user.profilePicutre,
+        Image(
+            painter = rememberImagePainter(user.profilePicutre),
             modifier = imageModifier,
             contentScale = ContentScale.Crop,
             contentDescription = "Profile picture"
         )
-        Column(modifier = Modifier.padding(start = 8.dp).align(Alignment.CenterVertically)) {
+        Column(modifier = Modifier
+            .padding(start = 8.dp)
+            .align(Alignment.CenterVertically)) {
             Text(
                 text = user.name,
                 fontWeight = FontWeight.Bold,
@@ -86,7 +93,7 @@ private fun UserList(userList: List<User>) {
 }
 
 @Composable
-fun UserScreen(userViewModel: UserViewModel) {
+fun UserScreen(userViewModel: MainViewModel) {
     val items: Result<List<User>> by userViewModel.fetchUserList.observeAsState(
         Result.Success(
             listOf()

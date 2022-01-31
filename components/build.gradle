@@ -4,13 +4,13 @@ plugins {
 }
 
 android {
-    compileSdkVersion 30
+    compileSdkVersion 31
     buildToolsVersion "30.0.3"
 
     defaultConfig {
         applicationId "com.example.jetexample"
         minSdkVersion 21
-        targetSdkVersion 30
+        targetSdkVersion 31
         versionCode 1
         versionName "1.0"
 
@@ -69,10 +69,10 @@ dependencies {
     implementation "androidx.activity:activity-compose:$activity_compose"
 
     // ktx LivaData
-    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.3.0"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.4.0"
 
-    implementation "androidx.activity:activity-ktx:1.2.0"
-    implementation "dev.chrisbanes.accompanist:accompanist-coil:$accompanist"
+    implementation "androidx.activity:activity-ktx:1.4.0"
+    implementation "io.coil-kt:coil-compose:1.4.0"
 
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'

@@ -1,4 +1,4 @@
-package com.example.jetexample.state.livedata.data.model
+package com.example.jetexample.data.model
 
 data class User(
     val profilePicutre: String = "",

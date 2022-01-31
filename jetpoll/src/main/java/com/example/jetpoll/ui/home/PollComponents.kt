@@ -30,7 +30,7 @@ import com.example.jetpoll.data.model.Option
 import com.example.jetpoll.data.model.Poll
 import com.example.jetpoll.ui.typography
 import com.example.jetpoll.utils.showMessage
-import dev.chrisbanes.accompanist.coil.CoilImage
+import com.google.accompanist.coil.CoilImage
 
 @Composable
 fun PollComponent(

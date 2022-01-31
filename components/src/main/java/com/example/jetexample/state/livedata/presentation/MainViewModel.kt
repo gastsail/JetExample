@@ -7,7 +7,7 @@ import com.example.jetexample.state.livedata.domain.Repo
 import com.example.jetexample.utils.Result
 import kotlinx.coroutines.delay
 
-class UserViewModel(private val repo:Repo): ViewModel() {
+class MainViewModel(private val repo:Repo): ViewModel() {
 
     /**
      * [EN]
@@ -25,6 +25,8 @@ class UserViewModel(private val repo:Repo): ViewModel() {
         delay(2000)
         emit(repo.getUserList())
     }
+
+    val getRecipelist = repo.getRecipeList()
 }
 
 
